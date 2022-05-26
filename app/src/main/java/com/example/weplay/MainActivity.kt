@@ -48,4 +48,12 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
     }
+
+    override fun onResume() {
+        super.onResume()
+        user = Firebase.auth.currentUser!!
+        Firebase.database.getReference("Users/${user.uid}").get().addOnSuccessListener {
+            binding.nicknametext.text = it.child("nickName").value.toString()
+        }
+    }
 }

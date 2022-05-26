@@ -1,5 +1,6 @@
 package com.example.weplay
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.weplay.databinding.ActivityProfileBinding
@@ -29,7 +30,7 @@ class ProfileActivity : AppCompatActivity() {
                 nicknametext.text = it.child("nickName").value.toString()
                 agetext.text = it.child("age").value.toString()
 
-                var gender = it.child("gender").value.toString().toInt()
+                val gender = it.child("gender").value.toString().toInt()
                 if (gender == 0) {
                     gendertext.text = "남자"
                 } else {
@@ -38,11 +39,18 @@ class ProfileActivity : AppCompatActivity() {
             }
 
             binding.updatebtn.setOnClickListener {
+                val intent = Intent(this, ProfileUpdateActivity::class.java)
+                startActivity(intent)
             }
 
             binding.gotomainbtn.setOnClickListener {
                 finish()
             }
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        initLayout()
     }
 }
