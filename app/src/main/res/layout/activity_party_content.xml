@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".party.PartyContentActivity">
+
+    <TextView
+        android:id="@+id/partyTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="제목" />
+
+    <TextView
+        android:id="@+id/partyPlace"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="장소" />
+
+    <TextView
+        android:id="@+id/partyDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="날짜" />
+
+    <TextView
+        android:id="@+id/partyParticipantsNum"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="참가 인원" />
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/partyParticipants"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+        </LinearLayout>
+
+
+    </HorizontalScrollView>
+
+    <TextView
+        android:id="@+id/partyContent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="내용" />
+
+    <Button
+        android:id="@+id/partyJoinBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="참가하기" />
+
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</LinearLayout>

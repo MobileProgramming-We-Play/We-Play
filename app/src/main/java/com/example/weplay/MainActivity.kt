@@ -1,5 +1,6 @@
 package com.example.weplay
 
+<<<<<<< HEAD
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -55,5 +56,14 @@ class MainActivity : AppCompatActivity() {
         Firebase.database.getReference("Users/${user.uid}").get().addOnSuccessListener {
             binding.nicknametext.text = it.child("nickName").value.toString()
         }
+=======
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+
+class MainActivity : AppCompatActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+>>>>>>> 8959779 (initial commit)
     }
 }
