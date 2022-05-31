@@ -41,6 +41,7 @@ class PartiesActivity : AppCompatActivity() {
                 val intent = Intent(this@PartiesActivity, PartyContentActivity::class.java)
                 val party = adapter.getItem(position)
                 intent.putExtra("party", party)
+                intent.putExtra("firebaseIndex", "Parties/party/${party.pid}")
                 startActivity(intent)
             }
         }
