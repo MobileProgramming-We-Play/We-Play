@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/radius"
+        android:padding="10dp">
+
+
+        <TextView
+            android:id="@+id/ptitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/psports"
+            android:text="제목"
+            android:textSize="30sp" />
+
+        <TextView
+            android:id="@+id/psports"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:text="종목" />
+
+        <TextView
+            android:id="@+id/pnownum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ptitle"
+            android:text="현원" />
+
+        <TextView
+            android:id="@+id/ptotalnum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ptitle"
+            android:layout_toRightOf="@+id/pnownum"
+            android:layout_marginLeft="8dp"
+            android:text="정원" />
+
+    </RelativeLayout>
+</LinearLayout>
