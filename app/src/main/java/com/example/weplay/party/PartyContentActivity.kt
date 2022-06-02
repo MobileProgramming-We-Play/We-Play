@@ -143,6 +143,7 @@ class PartyContentActivity : AppCompatActivity() {
 
     override fun onBackPressed() {
         super.onBackPressed()
-        startActivity(Intent(this, PartiesActivity::class.java))
+        //startActivity(Intent(this, PartiesActivity::class.java))
+        finish()
     }
 }
