@@ -6,10 +6,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import com.example.weplay.LoginActivity
 import com.example.weplay.ProfileUpdateActivity
 import com.example.weplay.R
 import com.example.weplay.databinding.FragmentPartiesBinding
 import com.example.weplay.databinding.FragmentProfileBinding
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.ktx.database
@@ -17,6 +20,7 @@ import com.google.firebase.ktx.Firebase
 
 class ProfileFragment : Fragment() {
     lateinit var binding: FragmentProfileBinding
+    lateinit var auth: FirebaseAuth
     lateinit var user: FirebaseUser
 
     override fun onCreateView(
@@ -27,9 +31,14 @@ class ProfileFragment : Fragment() {
         //return inflater.inflate(R.layout.fragment_profile, container, false)
 
         binding = FragmentProfileBinding.inflate(layoutInflater, container, false)
+        init()
+        return binding.root
+    }
 
-        binding.apply{
-            user = Firebase.auth.currentUser!!
+    private fun init() {
+        binding.apply {
+            auth = Firebase.auth
+            user = auth.currentUser!!
             val id = user.uid
 
             Firebase.database.getReference("Users/$id").get().addOnSuccessListener {
@@ -46,17 +55,18 @@ class ProfileFragment : Fragment() {
                     }
                 }
 
-//                binding.updatebtn.setOnClickListener {
-//                    val intent = Intent(this, ProfileUpdateActivity::class.java)
-//                    startActivity(intent)
-//                }
+                binding.updatebtn.setOnClickListener {
+                    (activity as MainActivity).changeToProfileUpdateFragment()
+                }
 
-//                binding.gotomainbtn.setOnClickListener {
-//                    finish()
-//                }
+                binding.logoutbtn.setOnClickListener {
+                    auth.signOut()
+                    Toast.makeText(activity, "로그아웃 완료", Toast.LENGTH_SHORT).show()
+                    val intent = Intent(activity, LoginActivity::class.java)
+                    startActivity(intent)
+                    activity?.finish()
+                }
             }
         }
-
-        return binding.root
     }
 }
