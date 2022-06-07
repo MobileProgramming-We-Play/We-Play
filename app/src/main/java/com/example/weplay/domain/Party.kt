@@ -12,8 +12,9 @@ data class Party(
     var pcontent: String,
     var platitude: Double,
     var plongitude: Double,
-    var psports: String
+    var psports: String,
+    var pcity : String
 ) : Serializable {
     constructor(): this(0,"noplace", "notitle", 0, 0,
-        ArrayList(), "nocontent", 0.0, 0.0,"notitle")
+        ArrayList(), "nocontent", 0.0, 0.0,"notitle", "notitle")
 }

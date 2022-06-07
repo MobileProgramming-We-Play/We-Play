@@ -32,11 +32,14 @@ class MyPartyAdapter(options: FirebaseRecyclerOptions<Party>)
 
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int, model: Party) {
+
         holder.binding.apply {
             ptitle.text = model.ptitle.toString()
             psports.text = model.psports.toString()
-            //pnownum.text = model.pnowNum.toString()
+            pnownum.text = model.pparticipants.size.toString()
             ptotalnum.text = model.pparticipantsNum.toString()
+            pcity.text = model.pcity.toString()
+
         }
     }
 
