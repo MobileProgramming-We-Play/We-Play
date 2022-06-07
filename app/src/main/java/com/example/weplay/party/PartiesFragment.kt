@@ -29,10 +29,12 @@ class PartiesFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        //val view = inflater.inflate(R.layout.fragment_parties, container, false)
-
         binding = FragmentPartiesBinding.inflate(layoutInflater, container, false)
+        init()
+        return binding.root
+    }
 
+    private fun init(){
         binding.apply {
             layoutManager = LinearLayoutManager(context)
             rdb = Firebase.database.getReference("Parties/party")
@@ -78,7 +80,6 @@ class PartiesFragment : Fragment() {
             }
         }
         adapter.startListening()
-        return binding!!.root
     }
 
 //    override fun onStart() {
