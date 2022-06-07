@@ -78,6 +78,557 @@ class PartiesFragment : Fragment() {
                 recyclerView.adapter = adapter
                 adapter.startListening()
             }
+
+            ///지역 버튼
+            all.setOnClickListener {
+                if (!findQuery)
+                    findQuery = true
+                if (adapter != null)
+                    adapter.stopListening()
+                val query: Query =
+                    rdb
+                val option = FirebaseRecyclerOptions.Builder<Party>()
+                    .setQuery(query, Party::class.java)
+                    .build()
+                adapter = MyPartyAdapter(option)
+                adapter.itemClickListener = object : MyPartyAdapter.OnItemClickListener {
+                    override fun onItemClick(position: Int) {
+                        binding.apply {
+                            pNameEdit.setText(adapter.getItem(position).psports)
+                        }
+                    }
+                }
+                recyclerView.adapter = adapter
+                adapter.startListening()
+            }
+            jongrogu.setOnClickListener {
+                if (!findQuery)
+                    findQuery = true
+                if (adapter != null)
+                    adapter.stopListening()
+                val query: Query =
+                    rdb.orderByChild("pcity").equalTo("종로구")
+                val option = FirebaseRecyclerOptions.Builder<Party>()
+                    .setQuery(query, Party::class.java)
+                    .build()
+                adapter = MyPartyAdapter(option)
+                adapter.itemClickListener = object : MyPartyAdapter.OnItemClickListener {
+                    override fun onItemClick(position: Int) {
+                        binding.apply {
+                            pNameEdit.setText(adapter.getItem(position).psports)
+                        }
+                    }
+                }
+                recyclerView.adapter = adapter
+                adapter.startListening()
+            }
+            junggu.setOnClickListener {
+                if (!findQuery)
+                    findQuery = true
+                if (adapter != null)
+                    adapter.stopListening()
+                val query: Query =
+                    rdb.orderByChild("pcity").equalTo("중구")
+                val option = FirebaseRecyclerOptions.Builder<Party>()
+                    .setQuery(query, Party::class.java)
+                    .build()
+                adapter = MyPartyAdapter(option)
+                adapter.itemClickListener = object : MyPartyAdapter.OnItemClickListener {
+                    override fun onItemClick(position: Int) {
+                        binding.apply {
+                            pNameEdit.setText(adapter.getItem(position).psports)
+                        }
+                    }
+                }
+                recyclerView.adapter = adapter
+                adapter.startListening()
+            }
+            yongsangu.setOnClickListener {
+                if (!findQuery)
+                    findQuery = true
+                if (adapter != null)
+                    adapter.stopListening()
+                val query: Query =
+                    rdb.orderByChild("pcity").equalTo("용산구")
+                val option = FirebaseRecyclerOptions.Builder<Party>()
+                    .setQuery(query, Party::class.java)
+                    .build()
+                adapter = MyPartyAdapter(option)
+                adapter.itemClickListener = object : MyPartyAdapter.OnItemClickListener {
+                    override fun onItemClick(position: Int) {
+                        binding.apply {
+                            pNameEdit.setText(adapter.getItem(position).psports)
+                        }
+                    }
+                }
+                recyclerView.adapter = adapter
+                adapter.startListening()
+            }
+            seongdonggu.setOnClickListener {
+                if (!findQuery)
+                    findQuery = true
+                if (adapter != null)
+                    adapter.stopListening()
+                val query: Query =
+                    rdb.orderByChild("pcity").equalTo("성동구")
+                val option = FirebaseRecyclerOptions.Builder<Party>()
+                    .setQuery(query, Party::class.java)
+                    .build()
+                adapter = MyPartyAdapter(option)
+                adapter.itemClickListener = object : MyPartyAdapter.OnItemClickListener {
+                    override fun onItemClick(position: Int) {
+                        binding.apply {
+                            pNameEdit.setText(adapter.getItem(position).psports)
+                        }
+                    }
+                }
+                recyclerView.adapter = adapter
+                adapter.startListening()
+            }
+            gwangjingu.setOnClickListener {
+                if (!findQuery)
+                    findQuery = true
+                if (adapter != null)
+                    adapter.stopListening()
+                val query: Query =
+                    rdb.orderByChild("pcity").equalTo("광진구")
+                val option = FirebaseRecyclerOptions.Builder<Party>()
+                    .setQuery(query, Party::class.java)
+                    .build()
+                adapter = MyPartyAdapter(option)
+                adapter.itemClickListener = object : MyPartyAdapter.OnItemClickListener {
+                    override fun onItemClick(position: Int) {
+                        binding.apply {
+                            pNameEdit.setText(adapter.getItem(position).psports)
+                        }
+                    }
+                }
+                recyclerView.adapter = adapter
+                adapter.startListening()
+            }
+            dongdaemungu.setOnClickListener {
+                if (!findQuery)
+                    findQuery = true
+                if (adapter != null)
+                    adapter.stopListening()
+                val query: Query =
+                    rdb.orderByChild("pcity").equalTo("동대문구")
+                val option = FirebaseRecyclerOptions.Builder<Party>()
+                    .setQuery(query, Party::class.java)
+                    .build()
+                adapter = MyPartyAdapter(option)
+                adapter.itemClickListener = object : MyPartyAdapter.OnItemClickListener {
+                    override fun onItemClick(position: Int) {
+                        binding.apply {
+                            pNameEdit.setText(adapter.getItem(position).psports)
+                        }
+                    }
+                }
+                recyclerView.adapter = adapter
+                adapter.startListening()
+            }
+            //////////
+            jungranggu.setOnClickListener {
+                if (!findQuery)
+                    findQuery = true
+                if (adapter != null)
+                    adapter.stopListening()
+                val query: Query =
+                    rdb.orderByChild("pcity").equalTo("중랑구")
+                val option = FirebaseRecyclerOptions.Builder<Party>()
+                    .setQuery(query, Party::class.java)
+                    .build()
+                adapter = MyPartyAdapter(option)
+                adapter.itemClickListener = object : MyPartyAdapter.OnItemClickListener {
+                    override fun onItemClick(position: Int) {
+                        binding.apply {
+                            pNameEdit.setText(adapter.getItem(position).psports)
+                        }
+                    }
+                }
+                recyclerView.adapter = adapter
+                adapter.startListening()
+            }
+            seongbukgu.setOnClickListener {
+                if (!findQuery)
+                    findQuery = true
+                if (adapter != null)
+                    adapter.stopListening()
+                val query: Query =
+                    rdb.orderByChild("pcity").equalTo("성북구")
+                val option = FirebaseRecyclerOptions.Builder<Party>()
+                    .setQuery(query, Party::class.java)
+                    .build()
+                adapter = MyPartyAdapter(option)
+                adapter.itemClickListener = object : MyPartyAdapter.OnItemClickListener {
+                    override fun onItemClick(position: Int) {
+                        binding.apply {
+                            pNameEdit.setText(adapter.getItem(position).psports)
+                        }
+                    }
+                }
+                recyclerView.adapter = adapter
+                adapter.startListening()
+            }
+            gangbukgu.setOnClickListener {
+                if (!findQuery)
+                    findQuery = true
+                if (adapter != null)
+                    adapter.stopListening()
+                val query: Query =
+                    rdb.orderByChild("pcity").equalTo("강북구")
+                val option = FirebaseRecyclerOptions.Builder<Party>()
+                    .setQuery(query, Party::class.java)
+                    .build()
+                adapter = MyPartyAdapter(option)
+                adapter.itemClickListener = object : MyPartyAdapter.OnItemClickListener {
+                    override fun onItemClick(position: Int) {
+                        binding.apply {
+                            pNameEdit.setText(adapter.getItem(position).psports)
+                        }
+                    }
+                }
+                recyclerView.adapter = adapter
+                adapter.startListening()
+            }
+            dobonggu.setOnClickListener {
+                if (!findQuery)
+                    findQuery = true
+                if (adapter != null)
+                    adapter.stopListening()
+                val query: Query =
+                    rdb.orderByChild("pcity").equalTo("도봉구")
+                val option = FirebaseRecyclerOptions.Builder<Party>()
+                    .setQuery(query, Party::class.java)
+                    .build()
+                adapter = MyPartyAdapter(option)
+                adapter.itemClickListener = object : MyPartyAdapter.OnItemClickListener {
+                    override fun onItemClick(position: Int) {
+                        binding.apply {
+                            pNameEdit.setText(adapter.getItem(position).psports)
+                        }
+                    }
+                }
+                recyclerView.adapter = adapter
+                adapter.startListening()
+            }
+            nowongu.setOnClickListener {
+                if (!findQuery)
+                    findQuery = true
+                if (adapter != null)
+                    adapter.stopListening()
+                val query: Query =
+                    rdb.orderByChild("pcity").equalTo("노원구")
+                val option = FirebaseRecyclerOptions.Builder<Party>()
+                    .setQuery(query, Party::class.java)
+                    .build()
+                adapter = MyPartyAdapter(option)
+                adapter.itemClickListener = object : MyPartyAdapter.OnItemClickListener {
+                    override fun onItemClick(position: Int) {
+                        binding.apply {
+                            pNameEdit.setText(adapter.getItem(position).psports)
+                        }
+                    }
+                }
+                recyclerView.adapter = adapter
+                adapter.startListening()
+            }
+            eunpyeonggu.setOnClickListener {
+                if (!findQuery)
+                    findQuery = true
+                if (adapter != null)
+                    adapter.stopListening()
+                val query: Query =
+                    rdb.orderByChild("pcity").equalTo("은평구")
+                val option = FirebaseRecyclerOptions.Builder<Party>()
+                    .setQuery(query, Party::class.java)
+                    .build()
+                adapter = MyPartyAdapter(option)
+                adapter.itemClickListener = object : MyPartyAdapter.OnItemClickListener {
+                    override fun onItemClick(position: Int) {
+                        binding.apply {
+                            pNameEdit.setText(adapter.getItem(position).psports)
+                        }
+                    }
+                }
+                recyclerView.adapter = adapter
+                adapter.startListening()
+            }
+            seodaemungu.setOnClickListener {
+                if (!findQuery)
+                    findQuery = true
+                if (adapter != null)
+                    adapter.stopListening()
+                val query: Query =
+                    rdb.orderByChild("pcity").equalTo("서대문구")
+                val option = FirebaseRecyclerOptions.Builder<Party>()
+                    .setQuery(query, Party::class.java)
+                    .build()
+                adapter = MyPartyAdapter(option)
+                adapter.itemClickListener = object : MyPartyAdapter.OnItemClickListener {
+                    override fun onItemClick(position: Int) {
+                        binding.apply {
+                            pNameEdit.setText(adapter.getItem(position).psports)
+                        }
+                    }
+                }
+                recyclerView.adapter = adapter
+                adapter.startListening()
+            }
+            /////////////
+            mapogu.setOnClickListener {
+                if (!findQuery)
+                    findQuery = true
+                if (adapter != null)
+                    adapter.stopListening()
+                val query: Query =
+                    rdb.orderByChild("pcity").equalTo("마포구")
+                val option = FirebaseRecyclerOptions.Builder<Party>()
+                    .setQuery(query, Party::class.java)
+                    .build()
+                adapter = MyPartyAdapter(option)
+                adapter.itemClickListener = object : MyPartyAdapter.OnItemClickListener {
+                    override fun onItemClick(position: Int) {
+                        binding.apply {
+                            pNameEdit.setText(adapter.getItem(position).psports)
+                        }
+                    }
+                }
+                recyclerView.adapter = adapter
+                adapter.startListening()
+            }
+            yangcheongu.setOnClickListener {
+                if (!findQuery)
+                    findQuery = true
+                if (adapter != null)
+                    adapter.stopListening()
+                val query: Query =
+                    rdb.orderByChild("pcity").equalTo("양천구")
+                val option = FirebaseRecyclerOptions.Builder<Party>()
+                    .setQuery(query, Party::class.java)
+                    .build()
+                adapter = MyPartyAdapter(option)
+                adapter.itemClickListener = object : MyPartyAdapter.OnItemClickListener {
+                    override fun onItemClick(position: Int) {
+                        binding.apply {
+                            pNameEdit.setText(adapter.getItem(position).psports)
+                        }
+                    }
+                }
+                recyclerView.adapter = adapter
+                adapter.startListening()
+            }
+            gangseogu.setOnClickListener {
+                if (!findQuery)
+                    findQuery = true
+                if (adapter != null)
+                    adapter.stopListening()
+                val query: Query =
+                    rdb.orderByChild("pcity").equalTo("강서구")
+                val option = FirebaseRecyclerOptions.Builder<Party>()
+                    .setQuery(query, Party::class.java)
+                    .build()
+                adapter = MyPartyAdapter(option)
+                adapter.itemClickListener = object : MyPartyAdapter.OnItemClickListener {
+                    override fun onItemClick(position: Int) {
+                        binding.apply {
+                            pNameEdit.setText(adapter.getItem(position).psports)
+                        }
+                    }
+                }
+                recyclerView.adapter = adapter
+                adapter.startListening()
+            }
+            gurogu.setOnClickListener {
+                if (!findQuery)
+                    findQuery = true
+                if (adapter != null)
+                    adapter.stopListening()
+                val query: Query =
+                    rdb.orderByChild("pcity").equalTo("구로구")
+                val option = FirebaseRecyclerOptions.Builder<Party>()
+                    .setQuery(query, Party::class.java)
+                    .build()
+                adapter = MyPartyAdapter(option)
+                adapter.itemClickListener = object : MyPartyAdapter.OnItemClickListener {
+                    override fun onItemClick(position: Int) {
+                        binding.apply {
+                            pNameEdit.setText(adapter.getItem(position).psports)
+                        }
+                    }
+                }
+                recyclerView.adapter = adapter
+                adapter.startListening()
+            }
+            geumcheongu.setOnClickListener {
+                if (!findQuery)
+                    findQuery = true
+                if (adapter != null)
+                    adapter.stopListening()
+                val query: Query =
+                    rdb.orderByChild("pcity").equalTo("금천구")
+                val option = FirebaseRecyclerOptions.Builder<Party>()
+                    .setQuery(query, Party::class.java)
+                    .build()
+                adapter = MyPartyAdapter(option)
+                adapter.itemClickListener = object : MyPartyAdapter.OnItemClickListener {
+                    override fun onItemClick(position: Int) {
+                        binding.apply {
+                            pNameEdit.setText(adapter.getItem(position).psports)
+                        }
+                    }
+                }
+                recyclerView.adapter = adapter
+                adapter.startListening()
+            }
+            yeongdeungpogu.setOnClickListener {
+                if (!findQuery)
+                    findQuery = true
+                if (adapter != null)
+                    adapter.stopListening()
+                val query: Query =
+                    rdb.orderByChild("pcity").equalTo("영등포구")
+                val option = FirebaseRecyclerOptions.Builder<Party>()
+                    .setQuery(query, Party::class.java)
+                    .build()
+                adapter = MyPartyAdapter(option)
+                adapter.itemClickListener = object : MyPartyAdapter.OnItemClickListener {
+                    override fun onItemClick(position: Int) {
+                        binding.apply {
+                            pNameEdit.setText(adapter.getItem(position).psports)
+                        }
+                    }
+                }
+                recyclerView.adapter = adapter
+                adapter.startListening()
+            }
+            /////////////
+            dongjakgu.setOnClickListener {
+                if (!findQuery)
+                    findQuery = true
+                if (adapter != null)
+                    adapter.stopListening()
+                val query: Query =
+                    rdb.orderByChild("pcity").equalTo("동작구")
+                val option = FirebaseRecyclerOptions.Builder<Party>()
+                    .setQuery(query, Party::class.java)
+                    .build()
+                adapter = MyPartyAdapter(option)
+                adapter.itemClickListener = object : MyPartyAdapter.OnItemClickListener {
+                    override fun onItemClick(position: Int) {
+                        binding.apply {
+                            pNameEdit.setText(adapter.getItem(position).psports)
+                        }
+                    }
+                }
+                recyclerView.adapter = adapter
+                adapter.startListening()
+            }
+            gwanakgu.setOnClickListener {
+                if (!findQuery)
+                    findQuery = true
+                if (adapter != null)
+                    adapter.stopListening()
+                val query: Query =
+                    rdb.orderByChild("pcity").equalTo("관악구")
+                val option = FirebaseRecyclerOptions.Builder<Party>()
+                    .setQuery(query, Party::class.java)
+                    .build()
+                adapter = MyPartyAdapter(option)
+                adapter.itemClickListener = object : MyPartyAdapter.OnItemClickListener {
+                    override fun onItemClick(position: Int) {
+                        binding.apply {
+                            pNameEdit.setText(adapter.getItem(position).psports)
+                        }
+                    }
+                }
+                recyclerView.adapter = adapter
+                adapter.startListening()
+            }
+            seochogu.setOnClickListener {
+                if (!findQuery)
+                    findQuery = true
+                if (adapter != null)
+                    adapter.stopListening()
+                val query: Query =
+                    rdb.orderByChild("pcity").equalTo("서초구")
+                val option = FirebaseRecyclerOptions.Builder<Party>()
+                    .setQuery(query, Party::class.java)
+                    .build()
+                adapter = MyPartyAdapter(option)
+                adapter.itemClickListener = object : MyPartyAdapter.OnItemClickListener {
+                    override fun onItemClick(position: Int) {
+                        binding.apply {
+                            pNameEdit.setText(adapter.getItem(position).psports)
+                        }
+                    }
+                }
+                recyclerView.adapter = adapter
+                adapter.startListening()
+            }
+            gangnamgu.setOnClickListener {
+                if (!findQuery)
+                    findQuery = true
+                if (adapter != null)
+                    adapter.stopListening()
+                val query: Query =
+                    rdb.orderByChild("pcity").equalTo("강남구")
+                val option = FirebaseRecyclerOptions.Builder<Party>()
+                    .setQuery(query, Party::class.java)
+                    .build()
+                adapter = MyPartyAdapter(option)
+                adapter.itemClickListener = object : MyPartyAdapter.OnItemClickListener {
+                    override fun onItemClick(position: Int) {
+                        binding.apply {
+                            pNameEdit.setText(adapter.getItem(position).psports)
+                        }
+                    }
+                }
+                recyclerView.adapter = adapter
+                adapter.startListening()
+            }
+            songpagu.setOnClickListener {
+                if (!findQuery)
+                    findQuery = true
+                if (adapter != null)
+                    adapter.stopListening()
+                val query: Query =
+                    rdb.orderByChild("pcity").equalTo("송파구")
+                val option = FirebaseRecyclerOptions.Builder<Party>()
+                    .setQuery(query, Party::class.java)
+                    .build()
+                adapter = MyPartyAdapter(option)
+                adapter.itemClickListener = object : MyPartyAdapter.OnItemClickListener {
+                    override fun onItemClick(position: Int) {
+                        binding.apply {
+                            pNameEdit.setText(adapter.getItem(position).psports)
+                        }
+                    }
+                }
+                recyclerView.adapter = adapter
+                adapter.startListening()
+            }
+            gangdonggu.setOnClickListener {
+                if (!findQuery)
+                    findQuery = true
+                if (adapter != null)
+                    adapter.stopListening()
+                val query: Query =
+                    rdb.orderByChild("pcity").equalTo("강동구")
+                val option = FirebaseRecyclerOptions.Builder<Party>()
+                    .setQuery(query, Party::class.java)
+                    .build()
+                adapter = MyPartyAdapter(option)
+                adapter.itemClickListener = object : MyPartyAdapter.OnItemClickListener {
+                    override fun onItemClick(position: Int) {
+                        binding.apply {
+                            pNameEdit.setText(adapter.getItem(position).psports)
+                        }
+                    }
+                }
+                recyclerView.adapter = adapter
+                adapter.startListening()
+            }
         }
         adapter.startListening()
     }
