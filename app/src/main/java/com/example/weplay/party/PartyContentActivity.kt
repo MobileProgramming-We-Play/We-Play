@@ -74,8 +74,9 @@ class PartyContentActivity : AppCompatActivity() {
 
             calendar = Calendar.getInstance()
             calendar.timeInMillis = party.pdate
+            Log.i("밀리세컨드", calendar.timeInMillis.toString())
             val year = calendar.get(Calendar.YEAR)
-            val month = calendar.get(Calendar.MONTH)
+            val month = calendar.get(Calendar.MONTH) + 1
             val day = calendar.get(Calendar.DATE)
 
             partyDate.text = "${year}년 ${month}월 ${day}일"
