@@ -1,6 +1,8 @@
 package com.example.weplay.party
 
 import android.annotation.SuppressLint
+import android.app.AlarmManager
+import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -13,6 +15,7 @@ import com.example.weplay.R
 import com.example.weplay.databinding.ActivityPartyContentBinding
 import com.example.weplay.domain.ParticipantInfo
 import com.example.weplay.domain.Party
+import com.example.weplay.party.notification.NotificationReceiver
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.SupportMapFragment
@@ -24,6 +27,7 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
+import java.util.*
 import kotlin.math.roundToInt
 
 class PartyContentActivity : AppCompatActivity() {
@@ -34,6 +38,7 @@ class PartyContentActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     private lateinit var user: FirebaseUser
     private lateinit var userName: String
+    private lateinit var calendar: Calendar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -64,8 +69,16 @@ class PartyContentActivity : AppCompatActivity() {
             partyTitle.text = party.ptitle
             partyPlace.text = party.pplace
             partyContent.text = party.pcontent
-            partyDate.text = party.pdate.toString()
+//            partyDate.text = party.pdate.toString()
             partyParticipantsNum.text = "확정인원: ${participants.size}/${party.pparticipantsNum}"
+
+            calendar = Calendar.getInstance()
+            calendar.timeInMillis = party.pdate
+            val year = calendar.get(Calendar.YEAR)
+            val month = calendar.get(Calendar.MONTH)
+            val day = calendar.get(Calendar.DATE)
+
+            partyDate.text = "${year}년 ${month}월 ${day}일"
 
 
             Log.i("참가자수: ", participants.size.toString())
@@ -108,6 +121,9 @@ class PartyContentActivity : AppCompatActivity() {
 
                     partyJoinBtn.isEnabled = false
                     partyJoinBtn.isClickable = false
+
+                    // 알림 설정
+                    startAlarm()
                 }
             }
 
@@ -139,6 +155,19 @@ class PartyContentActivity : AppCompatActivity() {
 //            googleMap.uiSettings.setAllGesturesEnabled(false)
 
         }
+    }
+
+    private fun startAlarm() {
+        val alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
+        val alarmIntent = Intent(this, NotificationReceiver::class.java)
+        val pendingIntent = PendingIntent.getBroadcast(
+            this, 1,
+            alarmIntent, 0
+        )
+
+        val alarmTime = calendar.timeInMillis - (24 * 60 * 60 * 1000)
+
+        alarmManager.setExact(AlarmManager.RTC_WAKEUP, alarmTime, pendingIntent)
     }
 
     override fun onBackPressed() {

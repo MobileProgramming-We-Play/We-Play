@@ -6,7 +6,7 @@ data class Party(
     var pid: Int,
     var pplace: String,
     var ptitle: String,
-    var pdate: Int,
+    var pdate: Long,
     var pparticipantsNum: Int,
     var pparticipants: List<ParticipantInfo>,
     var pcontent: String,
