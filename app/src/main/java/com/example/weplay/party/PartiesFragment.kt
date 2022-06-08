@@ -2,16 +2,19 @@ package com.example.weplay.party
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.weplay.R
 import com.example.weplay.databinding.ActivityMainBinding
 import com.example.weplay.databinding.FragmentPartiesBinding
 import com.example.weplay.domain.Party
 import com.firebase.ui.database.FirebaseRecyclerOptions
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.Query
 import com.google.firebase.database.ktx.database
@@ -23,7 +26,6 @@ class PartiesFragment : Fragment() {
     lateinit var adapter: MyPartyAdapter
     lateinit var rdb: DatabaseReference
     var findQuery = false
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -81,6 +83,7 @@ class PartiesFragment : Fragment() {
 
             ///지역 버튼
             all.setOnClickListener {
+
                 if (!findQuery)
                     findQuery = true
                 if (adapter != null)
