@@ -69,20 +69,18 @@ class PartyContentActivity : AppCompatActivity() {
             partyTitle.text = party.ptitle
             partyPlace.text = party.pplace
             partyContent.text = party.pcontent
-//            partyDate.text = party.pdate.toString()
-            partyParticipantsNum.text = "확정인원: ${participants.size}/${party.pparticipantsNum}"
+            partyParticipantsNum.text = "${participants.size}/${party.pparticipantsNum}"
 
             calendar = Calendar.getInstance()
             calendar.timeInMillis = party.pdate
-            Log.i("밀리세컨드", calendar.timeInMillis.toString())
+//            Log.i("밀리세컨드", calendar.timeInMillis.toString())
             val year = calendar.get(Calendar.YEAR)
             val month = calendar.get(Calendar.MONTH) + 1
             val day = calendar.get(Calendar.DATE)
+            val hour = calendar.get(Calendar.HOUR)
+            val minute = calendar.get(Calendar.MINUTE)
 
-            partyDate.text = "${year}년 ${month}월 ${day}일"
-
-
-            Log.i("참가자수: ", participants.size.toString())
+            partyDate.text = "${year}. %02d.%02d, %02d:%02d".format(month, day, hour, minute)
 
             for (participant in participants) {
                 val textView = TextView(this@PartyContentActivity)
@@ -97,7 +95,11 @@ class PartyContentActivity : AppCompatActivity() {
                 )
 
                 val marginLayoutParams = textView.layoutParams as ViewGroup.MarginLayoutParams
-                marginLayoutParams.setMargins(dpToPx(20, this@PartyContentActivity))
+                marginLayoutParams.setMargins(
+                    dpToPx(20, this@PartyContentActivity),
+                    dpToPx(10, this@PartyContentActivity),
+                    0, dpToPx(20, this@PartyContentActivity)
+                )
 
 
                 partyParticipants.addView(textView)
