@@ -1,6 +1,7 @@
 package com.example.weplay.party
 
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.app.AlarmManager
 import android.app.PendingIntent
 import android.content.Context
@@ -127,6 +128,8 @@ class PartyContentActivity : AppCompatActivity() {
 
                     // 알림 설정
                     startAlarm()
+                    setResult(Activity.RESULT_OK)
+                    finish()
                 }
             }
 
@@ -146,7 +149,7 @@ class PartyContentActivity : AppCompatActivity() {
             supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync {
             googleMap = it
-            googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(loc, 16.0f))
+            googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(loc, 16.0f))
 
             val option = MarkerOptions()
             option.position(loc)
