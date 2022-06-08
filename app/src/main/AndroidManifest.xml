@@ -38,7 +38,7 @@
             android:name=".party.PartyContentActivity"
             android:exported="false" />
         <activity
-            android:name=".party.PartiesActivity"
+            android:name=".party.ChattingActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

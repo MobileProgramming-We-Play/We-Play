@@ -48,6 +48,16 @@ class PartyContentActivity : AppCompatActivity() {
         initUser()
         initData()
         initMap()
+        initChatting()
+    }
+
+    private fun initChatting() {
+        binding.gotoChattingBtn.setOnClickListener {
+            party = intent.getSerializableExtra("party") as Party
+            val intent = Intent(this@PartyContentActivity, ChattingActivity::class.java)
+            intent.putExtra("roomID", party.pid)
+            startActivity(intent)
+        }
     }
 
     private fun initUser() {
