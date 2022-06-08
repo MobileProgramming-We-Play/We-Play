@@ -1,17 +1,13 @@
 package com.example.weplay.party
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import com.example.weplay.LoginActivity
-import com.example.weplay.R
-import com.example.weplay.User
-import com.example.weplay.databinding.FragmentProfileBinding
 import com.example.weplay.databinding.FragmentProfileUpdateBinding
+import com.example.weplay.domain.User
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DatabaseReference

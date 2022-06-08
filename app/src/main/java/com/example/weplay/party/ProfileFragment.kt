@@ -8,9 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import com.example.weplay.LoginActivity
-import com.example.weplay.ProfileUpdateActivity
-import com.example.weplay.R
-import com.example.weplay.databinding.FragmentPartiesBinding
 import com.example.weplay.databinding.FragmentProfileBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser

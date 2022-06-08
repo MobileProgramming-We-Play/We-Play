@@ -25,6 +25,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var auth: FirebaseAuth
     lateinit var user: FirebaseUser
     lateinit var partiesFragment: PartiesFragment
+    lateinit var myPartiesFragment: MyPartiesFragment
     lateinit var profileFragment: ProfileFragment
     lateinit var profileUpdateFragment: ProfileUpdateFragment
 
@@ -40,6 +41,7 @@ class MainActivity : AppCompatActivity() {
         user = auth.currentUser!!
 
         partiesFragment = PartiesFragment()
+        myPartiesFragment = MyPartiesFragment()
         profileFragment = ProfileFragment()
         profileUpdateFragment = ProfileUpdateFragment()
 
@@ -49,6 +51,11 @@ class MainActivity : AppCompatActivity() {
                     0 -> {
                         supportFragmentManager.beginTransaction()
                             .replace(R.id.fragmentContainerView, partiesFragment).commit()
+                    }
+
+                    1->{
+                        supportFragmentManager.beginTransaction()
+                            .replace(R.id.fragmentContainerView, myPartiesFragment).commit()
                     }
 
                     2 -> {
