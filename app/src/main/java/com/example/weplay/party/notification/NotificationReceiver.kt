@@ -1,8 +1,10 @@
 package com.example.weplay.party.notification
 
+import android.app.PendingIntent
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
+import com.example.weplay.LoginActivity
 
 class NotificationReceiver : BroadcastReceiver() {
 
@@ -10,14 +12,14 @@ class NotificationReceiver : BroadcastReceiver() {
         val notificationHelper = NotificationHelper(context)
         val builder = notificationHelper.getNotificationBuilder()
 
-        /*val newIntent = Intent(context, MainActivity::class.java)
+        val newIntent = Intent(context, LoginActivity::class.java)
         newIntent.putExtra("time", "메인")
         newIntent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP
 
         val pendingIntent =
             PendingIntent.getActivity(context, 1, newIntent,
                 PendingIntent.FLAG_UPDATE_CURRENT)
-        builder.setContentIntent(pendingIntent)*/
+        builder.setContentIntent(pendingIntent)
 
         val notification = builder.build()
 
