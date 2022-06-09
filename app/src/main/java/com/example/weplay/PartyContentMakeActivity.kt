@@ -49,14 +49,14 @@ class PartyContentMakeActivity : AppCompatActivity() {
             val latitude = intent.getDoubleExtra("latitude", 0.0)
             val longitude = intent.getDoubleExtra("longitude", 0.0)
 
+            partyCreateBtn.setOnClickListener {
 
-            val result = Firebase.database.getReference("Parties/party")
-                .get()
+                val result = Firebase.database.getReference("Parties/party")
+                    .get()
 
-            result.addOnSuccessListener {
+                result.addOnSuccessListener {
 //                Log.i("크기", result.result.childrenCount.toString())
 
-                partyCreateBtn.setOnClickListener {
                     val title = inputPartyTitle.text.toString()
                     val content = inputPartyContent.text.toString()
 
@@ -76,9 +76,11 @@ class PartyContentMakeActivity : AppCompatActivity() {
                         val intent = Intent(this@PartyContentMakeActivity, MainActivity::class.java)
                         startActivity(intent)
                     }
-
                 }
+
+
             }
+
 
 
         }
