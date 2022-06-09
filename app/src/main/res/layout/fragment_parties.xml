@@ -402,6 +402,8 @@
             android:textStyle="bold"
             android:text="강동구" />
 
+
+
     </LinearLayout>
 
 
@@ -411,5 +413,18 @@
         android:layout_height="462dp">
 
     </androidx.recyclerview.widget.RecyclerView>
+
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="30dp"
+        android:src="@drawable/ic_baseline_add_24"
+        android:id="@+id/fabMain"
+        app:fabSize="normal" />
 
 </LinearLayout>

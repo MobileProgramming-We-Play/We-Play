@@ -1,14 +1,19 @@
 package com.example.weplay.party
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
+import com.example.weplay.HeadcountActivity
 import com.example.weplay.R
+import com.example.weplay.SportsActivity
 import com.example.weplay.databinding.ActivityMainBinding
 import com.google.android.material.tabs.TabLayout
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import kotlinx.android.synthetic.main.fragment_parties.*
 
 class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
@@ -24,6 +29,11 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         init()
+
+        fabMain.setOnClickListener {
+            val intent = Intent(this, SportsActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun init() {
