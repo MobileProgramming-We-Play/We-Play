@@ -24,12 +24,9 @@ class HeadcountActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_headcount)
+        binding = ActivityHeadcountBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        btnCountHead.setOnClickListener {
-            val intent = Intent(this, MapsActivity::class.java)
-            startActivity(intent)
-        }
         initLayout()
     }
 
@@ -46,8 +43,8 @@ class HeadcountActivity : AppCompatActivity() {
 
 
         binding.btnCountHead.setOnClickListener {
-            val pparticipantsNum = numberPicker.value
-            finish()
+            val intent = Intent(this, MapsActivity::class.java)
+            startActivity(intent)
         }
     }
 }

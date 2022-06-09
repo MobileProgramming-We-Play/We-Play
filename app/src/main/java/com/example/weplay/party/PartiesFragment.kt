@@ -59,8 +59,10 @@ class PartiesFragment : Fragment() {
             adapter = MyPartyAdapter(option)
 
             fabMain.setOnClickListener{
-                val intent = Intent(requireActivity(), SportsActivity::class.java)
-                requireActivity().startActivity(intent)
+                /*val intent = Intent(requireActivity(), SportsActivity::class.java)
+                requireActivity().startActivity(intent)*/
+                val intent = Intent(activity, SportsActivity::class.java)
+                startActivity(intent)
             }
 
             adapter.itemClickListener = object : MyPartyAdapter.OnItemClickListener {

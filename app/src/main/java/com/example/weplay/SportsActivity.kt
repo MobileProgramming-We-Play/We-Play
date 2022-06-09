@@ -24,27 +24,23 @@ class SportsActivity : AppCompatActivity() {
         binding = ActivitySportsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        sportsbtn.setOnClickListener {
-            val intent = Intent(this, HeadcountActivity::class.java)
-            startActivity(intent)
-        }
         initLayout()
     }
 
     private fun initLayout() {
         user = Firebase.auth.currentUser!!
-        userList = Firebase.database.getReference("Parties/party")
+        /*userList = Firebase.database.getReference("Parties/party")
         val id = user.uid
 
         userList.child(id).get().addOnSuccessListener {
             binding.apply {
                 sportsedit.setText(it.child("sports").value.toString())
             }
-        }
+        }*/
 
         binding.sportsbtn.setOnClickListener {
-            val psports = binding.sportsedit.text.toString()
-            finish()
+            val intent = Intent(this, HeadcountActivity::class.java)
+            startActivity(intent)
         }
     }
 }
