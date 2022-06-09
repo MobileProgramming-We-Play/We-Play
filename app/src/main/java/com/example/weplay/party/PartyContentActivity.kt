@@ -53,6 +53,20 @@ class PartyContentActivity : AppCompatActivity() {
     }
 
     private fun initChatting() {
+        party = intent.getSerializableExtra("party") as Party
+        val participants = party.pparticipants
+
+        if (participants.values.stream()
+                .filter {
+                    it?.uid == user.uid
+                }
+                .count()
+                .toInt() != 0
+        ) {
+            binding.gotoChattingBtn.isEnabled = true
+            binding.gotoChattingBtn.isClickable = true
+        }
+
         binding.gotoChattingBtn.setOnClickListener {
             party = intent.getSerializableExtra("party") as Party
             val intent = Intent(this@PartyContentActivity, ChattingActivity::class.java)

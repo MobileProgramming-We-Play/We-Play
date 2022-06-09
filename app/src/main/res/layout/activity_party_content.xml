@@ -140,6 +140,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:enabled="false"
+            android:clickable="false"
             android:text="채팅방으로" />
 
     </LinearLayout>
