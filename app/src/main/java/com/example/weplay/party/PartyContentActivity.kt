@@ -23,6 +23,7 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.material.internal.ViewUtils.dpToPx
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
@@ -53,6 +54,20 @@ class PartyContentActivity : AppCompatActivity() {
     }
 
     private fun initChatting() {
+        party = intent.getSerializableExtra("party") as Party
+        val participants = party.pparticipants
+
+        if (participants.values.stream()
+                .filter {
+                    it?.uid == user.uid
+                }
+                .count()
+                .toInt() != 0
+        ) {
+            binding.gotoChattingBtn.isEnabled = true
+            binding.gotoChattingBtn.isClickable = true
+        }
+
         binding.gotoChattingBtn.setOnClickListener {
             party = intent.getSerializableExtra("party") as Party
             val intent = Intent(this@PartyContentActivity, ChattingActivity::class.java)
@@ -162,6 +177,7 @@ class PartyContentActivity : AppCompatActivity() {
 
                     partyJoinBtn.isEnabled = false
                     partyJoinBtn.isClickable = false
+                    initChatting()
 
                     // 알림 설정
                     startAlarm()

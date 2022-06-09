@@ -60,13 +60,5 @@ class MyMessageAdapter(options: FirebaseRecyclerOptions<Message>) :
                 text.text = model.text
             }
         }
-
-
-//        holder.binding.apply {
-//            useridLeft.text = model.uid
-//            timeLeft.text = model.time
-//            text.text = model.text
-//        }
     }
-
 }
