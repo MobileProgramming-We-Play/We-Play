@@ -13,6 +13,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.WePlay">
+        <activity
+            android:name=".PartyContentMakeActivity"
+            android:exported="false" />
+
         <receiver
             android:name=".party.notification.NotificationReceiver"
             android:enabled="true"
@@ -21,6 +25,7 @@
                 <action android:name="android.app.action.SCHEDULE_EXACT_ALARM_PERMISSION_STATE_CHANGED" />
             </intent-filter>
         </receiver>
+
         <activity
             android:name=".LoginActivity"
             android:exported="true">
@@ -47,25 +52,16 @@
         </activity>
         <activity
             android:name=".party.MainActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".SportsActivity"
-            android:exported="false"/>
-
+            android:exported="false" />
         <activity
             android:name=".HeadcountActivity"
-            android:exported="false"/>
-
+            android:exported="false" />
         <activity
             android:name=".MapsActivity"
-            android:exported="false"/>
-
+            android:exported="false" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
