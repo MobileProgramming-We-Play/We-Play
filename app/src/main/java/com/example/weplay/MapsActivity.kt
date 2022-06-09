@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.weplay.databinding.ActivityMapsBinding
+import com.example.weplay.party.MainActivity
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.MapView
@@ -31,6 +32,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private lateinit var mMap: GoogleMap
     private lateinit var mapView: MapView
+    private lateinit var location : LatLng
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,6 +43,15 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         mapView.onCreate(savedInstanceState)
         mapView.getMapAsync(this)
         initLayout()
+
+        binding.mapbtn.setOnClickListener {
+            val intent = Intent(this, PartyContentMakeActivity::class.java).apply {
+                putExtra("location", location)
+                putExtra("person", intent.getIntExtra("person", 0))
+                putExtra("field", intent.getStringExtra("field"))
+            }
+            startActivity(intent)
+        }
     }
 
     private fun initLayout() {
@@ -51,15 +62,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         userList.child(id).get().addOnSuccessListener {
             binding.apply {
             }
-        }
-        binding.mapbtn.setOnClickListener {
-            val intent = Intent(this, PartyContentMakeActivity::class.java).apply {
-                putExtra("location", location)
-                putExtra("person", intent.getIntExtra("person", 0))
-                putExtra("field", intent.getStringExtra("field"))
-
-            }
-            startActivity(intent)
         }
     }
 
@@ -94,7 +96,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             options.title("선택한 좌표")
             val lat = it.latitude
             val lng = it.longitude
-            options.position(LatLng(lat, lng))
+            location = LatLng(lat, lng)
+            options.position(location)
             mMap.addMarker(options)
         }
     }
