@@ -39,7 +39,7 @@ class NotificationHelper(base: Context?) : ContextWrapper(base) {
         val builder = NotificationCompat.Builder(this, id)
             .setSmallIcon(R.drawable.ic_baseline_access_alarm_24)
             .setContentTitle("일정 알람")
-            .setContentText("내일 모임입니다.")
+            .setContentText("내일 모임 잊지 않으셨죠?")
             .setAutoCancel(true)
 
         return builder
