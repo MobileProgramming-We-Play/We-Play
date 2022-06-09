@@ -1,5 +1,6 @@
 package com.example.weplay
 
+import android.content.Intent
 import android.location.Location
 import android.location.LocationListener
 import android.os.Bundle
@@ -50,6 +51,15 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         userList.child(id).get().addOnSuccessListener {
             binding.apply {
             }
+        }
+        binding.mapbtn.setOnClickListener {
+            val intent = Intent(this, PartyContentMakeActivity::class.java).apply {
+                putExtra("location", location)
+                putExtra("person", intent.getIntExtra("person", 0))
+                putExtra("field", intent.getStringExtra("field"))
+
+            }
+            startActivity(intent)
         }
     }
 
