@@ -435,11 +435,12 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
         android:layout_gravity="bottom"
-        android:src="@drawable/ic_baseline_add_24"
-        app:fabSize="normal"
-        app:layout_constraintBottom_toBottomOf="@+id/linearLayout2"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
+        android:src="@drawable/ic_baseline_add_24"
+        app:backgroundTint="#5688bc"
+        app:fabSize="normal"
+        app:layout_constraintBottom_toBottomOf="@+id/linearLayout2"
         app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
