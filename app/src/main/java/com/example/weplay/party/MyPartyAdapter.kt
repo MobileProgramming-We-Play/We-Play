@@ -37,7 +37,7 @@ class MyPartyAdapter(options: FirebaseRecyclerOptions<Party>)
         holder.binding.apply {
             calendar = Calendar.getInstance()
             calendar.timeInMillis = model.pdate
-            Log.i("밀리세컨드", calendar.timeInMillis.toString())
+
             val year = calendar.get(Calendar.YEAR)
             val month = calendar.get(Calendar.MONTH) + 1
             val day = calendar.get(Calendar.DATE)

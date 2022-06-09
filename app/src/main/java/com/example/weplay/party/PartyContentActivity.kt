@@ -84,7 +84,7 @@ class PartyContentActivity : AppCompatActivity() {
 
             calendar = Calendar.getInstance()
             calendar.timeInMillis = party.pdate
-//            Log.i("밀리세컨드", calendar.timeInMillis.toString())
+
             val year = calendar.get(Calendar.YEAR)
             val month = calendar.get(Calendar.MONTH) + 1
             val day = calendar.get(Calendar.DATE)
@@ -92,29 +92,6 @@ class PartyContentActivity : AppCompatActivity() {
             val minute = calendar.get(Calendar.MINUTE)
 
             partyDate.text = "${year}. %02d.%02d, %02d:%02d".format(month, day, hour, minute)
-
-            /*for (participant in participants) {
-                val textView = TextView(this@PartyContentActivity)
-                textView.text = participant.uname
-                textView.layoutParams = ViewGroup.LayoutParams(
-                    ViewGroup.LayoutParams.WRAP_CONTENT,
-                    ViewGroup.LayoutParams.WRAP_CONTENT,
-                )
-                textView.layoutParams = ViewGroup.MarginLayoutParams(
-                    ViewGroup.LayoutParams.WRAP_CONTENT,
-                    ViewGroup.LayoutParams.WRAP_CONTENT,
-                )
-
-                val marginLayoutParams = textView.layoutParams as ViewGroup.MarginLayoutParams
-                marginLayoutParams.setMargins(
-                    dpToPx(20, this@PartyContentActivity),
-                    dpToPx(10, this@PartyContentActivity),
-                    0, dpToPx(20, this@PartyContentActivity)
-                )
-
-
-                partyParticipants.addView(textView)
-            }*/
 
             participants.values
                 .stream()
@@ -140,8 +117,6 @@ class PartyContentActivity : AppCompatActivity() {
 
                     partyParticipants.addView(textView)
                 }
-
-
 
             if (participants.size == party.pparticipantsNum ||
                     participants.values.stream()
