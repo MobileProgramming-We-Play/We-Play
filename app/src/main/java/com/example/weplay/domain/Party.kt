@@ -8,7 +8,7 @@ data class Party(
     var ptitle: String,
     var pdate: Long,
     var pparticipantsNum: Int,
-    var pparticipants: List<ParticipantInfo>,
+    var pparticipants: Map<String, ParticipantInfo>,
     var pcontent: String,
     var platitude: Double,
     var plongitude: Double,
@@ -16,5 +16,5 @@ data class Party(
     var pcity : String
 ) : Serializable {
     constructor(): this(0,"noplace", "notitle", 0, 0,
-        ArrayList(), "nocontent", 0.0, 0.0,"notitle", "notitle")
+        HashMap(), "nocontent", 0.0, 0.0,"notitle", "notitle")
 }

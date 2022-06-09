@@ -1,6 +1,7 @@
 package com.example.weplay.party
 
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.app.AlarmManager
 import android.app.PendingIntent
 import android.content.Context
@@ -79,42 +80,71 @@ class PartyContentActivity : AppCompatActivity() {
             partyTitle.text = party.ptitle
             partyPlace.text = party.pplace
             partyContent.text = party.pcontent
-//            partyDate.text = party.pdate.toString()
-            partyParticipantsNum.text = "확정인원: ${participants.size}/${party.pparticipantsNum}"
+            partyParticipantsNum.text = "${participants.size}/${party.pparticipantsNum}"
 
             calendar = Calendar.getInstance()
             calendar.timeInMillis = party.pdate
-            Log.i("밀리세컨드", calendar.timeInMillis.toString())
+//            Log.i("밀리세컨드", calendar.timeInMillis.toString())
             val year = calendar.get(Calendar.YEAR)
             val month = calendar.get(Calendar.MONTH) + 1
             val day = calendar.get(Calendar.DATE)
+            val hour = calendar.get(Calendar.HOUR)
+            val minute = calendar.get(Calendar.MINUTE)
 
-            partyDate.text = "${year}년 ${month}월 ${day}일"
+            partyDate.text = "${year}. %02d.%02d, %02d:%02d".format(month, day, hour, minute)
 
-
-            Log.i("참가자수: ", participants.size.toString())
-
-            for (participant in participants) {
+            /*for (participant in participants) {
                 val textView = TextView(this@PartyContentActivity)
                 textView.text = participant.uname
-                /*textView.layoutParams = ViewGroup.LayoutParams(
+                textView.layoutParams = ViewGroup.LayoutParams(
                     ViewGroup.LayoutParams.WRAP_CONTENT,
                     ViewGroup.LayoutParams.WRAP_CONTENT,
-                )*/
+                )
                 textView.layoutParams = ViewGroup.MarginLayoutParams(
                     ViewGroup.LayoutParams.WRAP_CONTENT,
                     ViewGroup.LayoutParams.WRAP_CONTENT,
                 )
 
                 val marginLayoutParams = textView.layoutParams as ViewGroup.MarginLayoutParams
-                marginLayoutParams.setMargins(dpToPx(20, this@PartyContentActivity))
+                marginLayoutParams.setMargins(
+                    dpToPx(20, this@PartyContentActivity),
+                    dpToPx(10, this@PartyContentActivity),
+                    0, dpToPx(20, this@PartyContentActivity)
+                )
 
 
                 partyParticipants.addView(textView)
-            }
+            }*/
+
+            participants.values
+                .stream()
+                .forEach {
+                    val textView = TextView(this@PartyContentActivity)
+                    textView.text = it.uname
+
+                    textView.layoutParams = ViewGroup.LayoutParams(
+                        ViewGroup.LayoutParams.WRAP_CONTENT,
+                        ViewGroup.LayoutParams.WRAP_CONTENT,
+                    )
+                    textView.layoutParams = ViewGroup.MarginLayoutParams(
+                        ViewGroup.LayoutParams.WRAP_CONTENT,
+                        ViewGroup.LayoutParams.WRAP_CONTENT,
+                    )
+
+                    val marginLayoutParams = textView.layoutParams as ViewGroup.MarginLayoutParams
+                    marginLayoutParams.setMargins(
+                        dpToPx(20, this@PartyContentActivity),
+                        dpToPx(10, this@PartyContentActivity),
+                        0, dpToPx(20, this@PartyContentActivity)
+                    )
+
+                    partyParticipants.addView(textView)
+                }
+
+
 
             if (participants.size == party.pparticipantsNum ||
-                    participants.stream()
+                    participants.values.stream()
                         .filter {
                             it?.uid == user.uid
                         }
@@ -127,7 +157,7 @@ class PartyContentActivity : AppCompatActivity() {
                 val index = intent.getStringExtra("firebaseIndex")
                 partyJoinBtn.setOnClickListener {
                     Firebase.database.getReference("$index")
-                        .child("pparticipants/${participants.size}")
+                        .child("pparticipants/${user.uid}")
                         .setValue(ParticipantInfo(user.uid, userName))
 
                     partyJoinBtn.isEnabled = false
@@ -135,6 +165,8 @@ class PartyContentActivity : AppCompatActivity() {
 
                     // 알림 설정
                     startAlarm()
+                    setResult(Activity.RESULT_OK)
+                    finish()
                 }
             }
 
@@ -154,7 +186,7 @@ class PartyContentActivity : AppCompatActivity() {
             supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync {
             googleMap = it
-            googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(loc, 16.0f))
+            googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(loc, 16.0f))
 
             val option = MarkerOptions()
             option.position(loc)

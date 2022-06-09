@@ -1,5 +1,6 @@
 package com.example.weplay.party
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -8,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.weplay.R
 import com.example.weplay.databinding.ActivityMainBinding
@@ -26,6 +28,15 @@ class PartiesFragment : Fragment() {
     lateinit var adapter: MyPartyAdapter
     lateinit var rdb: DatabaseReference
     var findQuery = false
+
+    private val activityResultLauncher = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult()
+    ) {
+        if (it.resultCode == Activity.RESULT_OK) {
+            Toast.makeText(context, "참가했습니다.", Toast.LENGTH_SHORT).show()
+        }
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -52,7 +63,8 @@ class PartiesFragment : Fragment() {
                     val party = adapter.getItem(position)
                     intent.putExtra("party", party)
                     intent.putExtra("firebaseIndex", "Parties/party/${party.pid}")
-                    startActivity(intent)
+//                    startActivity(intent)
+                    activityResultLauncher.launch(intent)
                 }
             }
             recyclerView.layoutManager = layoutManager
