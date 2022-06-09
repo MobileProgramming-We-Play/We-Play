@@ -42,7 +42,8 @@ class MyPartiesFragment : Fragment() {
             layoutManager = LinearLayoutManager(context)
             rdb = Firebase.database.getReference("Parties/party")
 //            val query: Query = rdb.orderByChild("pcity").equalTo("중구")
-            val query: Query = rdb.orderByChild("pparticipants/2/uid").equalTo(user.uid.toString())
+            var path = "pparticipants/" + user.uid + "/uid"
+            val query: Query = rdb.orderByChild(path).equalTo(user.uid)
             val option = FirebaseRecyclerOptions.Builder<Party>()
                 .setQuery(query, Party::class.java)
                 .build()
