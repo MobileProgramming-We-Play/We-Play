@@ -22,6 +22,8 @@ class HeadcountActivity : AppCompatActivity() {
     lateinit var user: FirebaseUser
     lateinit var userList: DatabaseReference
 
+    private var selectedCnt = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityHeadcountBinding.inflate(layoutInflater)
@@ -37,13 +39,20 @@ class HeadcountActivity : AppCompatActivity() {
 
         userList.child(id).get().addOnSuccessListener {
             binding.apply {
-                numberPicker.value
+//                numberPicker.value
+                numberPicker.minValue = 1
+                numberPicker.maxValue = 20
+                numberPicker.value = 1
+                numberPicker.setOnValueChangedListener { numberPicker, old, new ->
+                    selectedCnt = new
+                }
             }
         }
 
 
         binding.btnCountHead.setOnClickListener {
-            val cnt = binding.numberPicker.value
+//            val cnt = binding.numberPicker.value
+            val cnt = selectedCnt
             val intent = Intent(this, MapsActivity::class.java).apply {
                 putExtra("person", cnt)
                 putExtra("field", intent.getStringExtra("field"))

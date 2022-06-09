@@ -46,7 +46,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
         binding.mapbtn.setOnClickListener {
             val intent = Intent(this, PartyContentMakeActivity::class.java).apply {
-                putExtra("location", location)
+                putExtra("latitude", location.latitude)
+                putExtra("longitude", location.longitude)
                 putExtra("person", intent.getIntExtra("person", 0))
                 putExtra("field", intent.getStringExtra("field"))
             }
