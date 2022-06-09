@@ -19,13 +19,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.google.android.gms.maps.MapView
+    <androidx.fragment.app.FragmentContainerView
         android:id="@+id/clKakaoMapView"
         android:layout_width="match_parent"
         android:layout_height="500dp"
         android:layout_marginTop="20dp"
         app:layout_constraintTop_toBottomOf="@+id/textView"
-        android:name="com.google.android.gms.maps.MapFragment"/>
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        />
 
     <Button
         android:id="@+id/mapbtn"

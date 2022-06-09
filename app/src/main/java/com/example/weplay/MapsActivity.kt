@@ -8,10 +8,8 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.weplay.databinding.ActivityMapsBinding
 import com.example.weplay.party.MainActivity
-import com.google.android.gms.maps.CameraUpdateFactory
-import com.google.android.gms.maps.GoogleMap
-import com.google.android.gms.maps.MapView
-import com.google.android.gms.maps.OnMapReadyCallback
+import com.google.android.gms.maps.*
+import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.firebase.auth.FirebaseUser
@@ -23,7 +21,7 @@ import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.activity_maps.*
 
 
-class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
+class MapsActivity : AppCompatActivity() {
     lateinit var binding: ActivityMapsBinding
     lateinit var user: FirebaseUser
     lateinit var userList: DatabaseReference    //파이어베이스 접근하기 위한 객체 생성
@@ -39,20 +37,59 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         binding = ActivityMapsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        mapView = binding.clKakaoMapView
-        mapView.onCreate(savedInstanceState)
-        mapView.getMapAsync(this)
+//        mapView = binding.clKakaoMapView
+       /* mapView.onCreate(savedInstanceState)
+        mapView.getMapAsync(this)*/
+        initMap()
         initLayout()
 
         binding.mapbtn.setOnClickListener {
-            val intent = Intent(this, PartyContentMakeActivity::class.java).apply {
-                putExtra("latitude", location.latitude)
-                putExtra("longitude", location.longitude)
-                putExtra("person", intent.getIntExtra("person", 0))
-                putExtra("field", intent.getStringExtra("field"))
+
+            if (::location.isInitialized) {
+                val intent = Intent(this, PartyContentMakeActivity::class.java).apply {
+                    putExtra("latitude", location.latitude)
+                    putExtra("longitude", location.longitude)
+                    putExtra("person", intent.getIntExtra("person", 0))
+                    putExtra("field", intent.getStringExtra("field"))
+                }
+                startActivity(intent)
             }
-            startActivity(intent)
+
         }
+    }
+
+    private fun initMap() {
+        val loc = LatLng(37.5436, 127.0770)
+
+        val mapFragment =
+            supportFragmentManager.findFragmentById(R.id.clKakaoMapView) as SupportMapFragment
+        mapFragment.getMapAsync {
+            mMap = it
+            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(loc, 16.0f))
+
+            mMap.uiSettings.isZoomControlsEnabled = true
+
+            mMap.setOnMapClickListener { itLatLng ->
+                val options = MarkerOptions()
+                options.title("선택한 좌표")
+                val lat = itLatLng.latitude
+                val lng = itLatLng.longitude
+                location = LatLng(lat, lng)
+                options.position(location)
+                mMap.addMarker(options)
+            }
+
+            /*val option = MarkerOptions()
+            option.position(loc)
+            option.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN))
+            option.title("위치")
+            option.snippet("모임장소")
+            mMap.addMarker(option)?.showInfoWindow()*/
+
+//            googleMap.uiSettings.setAllGesturesEnabled(false)
+
+        }
+
     }
 
     private fun initLayout() {
@@ -88,7 +125,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         override fun onStatusChanged(provider: String?, status: Int, extras: Bundle?) {}
     }
 
-    override fun onMapReady(googleMap: GoogleMap) {
+    /*override fun onMapReady(googleMap: GoogleMap) {
         mMap =googleMap
         mMap.uiSettings.isZoomControlsEnabled = true
 
@@ -101,5 +138,5 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             options.position(location)
             mMap.addMarker(options)
         }
-    }
+    }*/
 }
