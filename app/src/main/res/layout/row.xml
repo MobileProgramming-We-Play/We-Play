@@ -45,41 +45,41 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="4dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginTop="13dp"
             android:text="현원"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/textView2" />
+            app:layout_constraintEnd_toStartOf="@+id/textView2"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/ptotalnum"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="10dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginTop="13dp"
             android:text="정원"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="4dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginTop="13dp"
             android:text="/"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/ptotalnum" />
+            app:layout_constraintEnd_toStartOf="@+id/ptotalnum"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="4dp"
-            android:layout_marginBottom="8dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginTop="11dp"
             app:layout_constraintEnd_toStartOf="@+id/pnownum"
+            app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_baseline_person_24" />
 
         <TextView
@@ -87,29 +87,20 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginBottom="50dp"
             android:text="구"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ptitle" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
             android:id="@+id/pdate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="6dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginBottom="50dp"
             android:text="20220506"
-            app:layout_constraintStart_toEndOf="@+id/pcity"
-            app:layout_constraintTop_toBottomOf="@+id/ptitle" />
-
-        <!--        <ImageView-->
-        <!--            android:id="@+id/psportsIcon"-->
-        <!--            android:layout_width="40dp"-->
-        <!--            android:layout_height="40dp"-->
-        <!--            android:layout_marginBottom="10dp"-->
-        <!--            app:layout_constraintBottom_toBottomOf="parent"-->
-        <!--            app:layout_constraintStart_toEndOf="@+id/psports"-->
-        <!--            app:srcCompat="@drawable/running" />-->
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/pcity" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </LinearLayout>
