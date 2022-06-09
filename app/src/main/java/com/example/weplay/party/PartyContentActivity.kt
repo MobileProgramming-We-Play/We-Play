@@ -13,6 +13,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.core.view.setMargins
 import com.example.weplay.R
+import com.example.weplay.SportsActivity
 import com.example.weplay.databinding.ActivityPartyContentBinding
 import com.example.weplay.domain.ParticipantInfo
 import com.example.weplay.domain.Party
@@ -121,6 +122,12 @@ class PartyContentActivity : AppCompatActivity() {
                         ViewGroup.LayoutParams.WRAP_CONTENT,
                         ViewGroup.LayoutParams.WRAP_CONTENT,
                     )
+                    val uid = it.uid
+                    textView.setOnClickListener {
+                        val intent = Intent(this@PartyContentActivity, OthersProfileActivity::class.java)
+                        intent.putExtra("uid",uid)
+                        startActivity(intent)
+                    }
 
                     val marginLayoutParams = textView.layoutParams as ViewGroup.MarginLayoutParams
                     marginLayoutParams.setMargins(

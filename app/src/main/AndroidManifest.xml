@@ -14,6 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.WePlay">
         <activity
+            android:name=".party.OthersProfileActivity"
+            android:exported="false" />
+        <activity
             android:name=".PartyContentMakeActivity"
             android:exported="false" />
 
