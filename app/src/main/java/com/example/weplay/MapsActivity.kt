@@ -9,17 +9,16 @@ import com.example.weplay.databinding.ActivityMapsBinding
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.model.LatLng
+import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
-import kotlinx.android.synthetic.main.activity_maps.*
-
 
 class MapsActivity : AppCompatActivity() {
     lateinit var binding: ActivityMapsBinding
-    lateinit var user: Firebase
+    lateinit var user: FirebaseUser
     lateinit var userList: DatabaseReference    //파이어베이스 접근하기 위한 객체 생성
     var firebaseDatabase = FirebaseDatabase.getInstance()
     var databaseReference: DatabaseReference = firebaseDatabase.getReference().child("GPS정보")

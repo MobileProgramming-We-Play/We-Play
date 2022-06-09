@@ -4,7 +4,6 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
-import com.example.weplay.databinding.ActivityProfileUpdateBinding
 import com.example.weplay.databinding.ActivitySportsBinding
 import com.example.weplay.domain.Party
 import com.google.firebase.auth.FirebaseUser

@@ -4,7 +4,6 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
-import com.example.weplay.HeadcountActivity
 import com.example.weplay.R
 import com.example.weplay.SportsActivity
 import com.example.weplay.databinding.ActivityMainBinding

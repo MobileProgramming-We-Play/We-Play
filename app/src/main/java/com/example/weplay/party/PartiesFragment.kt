@@ -47,6 +47,13 @@ class PartiesFragment : Fragment() {
         return binding.root
     }
 
+    private fun changeIntent(position: Int) {
+        val intent = Intent(activity, PartyContentActivity::class.java)
+        val party = adapter.getItem(position)
+        intent.putExtra("party", party)
+        intent.putExtra("firebaseIndex", "Parties/party/${party.pid}")
+        activityResultLauncher.launch(intent)
+    }
     private fun init(){
         binding.apply {
             layoutManager = LinearLayoutManager(context)
@@ -59,12 +66,12 @@ class PartiesFragment : Fragment() {
 
             adapter.itemClickListener = object : MyPartyAdapter.OnItemClickListener {
                 override fun onItemClick(position: Int) {
-                    val intent = Intent(activity, PartyContentActivity::class.java)
+                    /*val intent = Intent(activity, PartyContentActivity::class.java)
                     val party = adapter.getItem(position)
                     intent.putExtra("party", party)
                     intent.putExtra("firebaseIndex", "Parties/party/${party.pid}")
-//                    startActivity(intent)
-                    activityResultLauncher.launch(intent)
+                    activityResultLauncher.launch(intent)*/
+                    changeIntent(position)
                 }
             }
             recyclerView.layoutManager = layoutManager
@@ -83,11 +90,12 @@ class PartiesFragment : Fragment() {
                 adapter = MyPartyAdapter(option)
                 adapter.itemClickListener = object : MyPartyAdapter.OnItemClickListener {
                     override fun onItemClick(position: Int) {
-                        val intent = Intent(activity, PartyContentActivity::class.java)
+                       /* val intent = Intent(activity, PartyContentActivity::class.java)
                         val party = adapter.getItem(position)
                         intent.putExtra("party", party)
                         intent.putExtra("firebaseIndex", "Parties/party/${party.pid}")
-                        startActivity(intent)
+                        startActivity(intent)*/
+                        changeIntent(position)
                     }
                 }
                 recyclerView.adapter = adapter
@@ -109,11 +117,12 @@ class PartiesFragment : Fragment() {
                 adapter = MyPartyAdapter(option)
                 adapter.itemClickListener = object : MyPartyAdapter.OnItemClickListener {
                     override fun onItemClick(position: Int) {
-                        val intent = Intent(activity, PartyContentActivity::class.java)
+                        /*val intent = Intent(activity, PartyContentActivity::class.java)
                         val party = adapter.getItem(position)
                         intent.putExtra("party", party)
                         intent.putExtra("firebaseIndex", "Parties/party/${party.pid}")
-                        startActivity(intent)
+                        startActivity(intent)*/
+                        changeIntent(position)
                     }
                 }
                 recyclerView.adapter = adapter
@@ -132,11 +141,12 @@ class PartiesFragment : Fragment() {
                 adapter = MyPartyAdapter(option)
                 adapter.itemClickListener = object : MyPartyAdapter.OnItemClickListener {
                     override fun onItemClick(position: Int) {
-                        val intent = Intent(activity, PartyContentActivity::class.java)
+                        /*val intent = Intent(activity, PartyContentActivity::class.java)
                         val party = adapter.getItem(position)
                         intent.putExtra("party", party)
                         intent.putExtra("firebaseIndex", "Parties/party/${party.pid}")
-                        startActivity(intent)
+                        startActivity(intent)*/
+                        changeIntent(position)
                     }
                 }
                 recyclerView.adapter = adapter
@@ -155,11 +165,12 @@ class PartiesFragment : Fragment() {
                 adapter = MyPartyAdapter(option)
                 adapter.itemClickListener = object : MyPartyAdapter.OnItemClickListener {
                     override fun onItemClick(position: Int) {
-                        val intent = Intent(activity, PartyContentActivity::class.java)
+                        /*val intent = Intent(activity, PartyContentActivity::class.java)
                         val party = adapter.getItem(position)
                         intent.putExtra("party", party)
                         intent.putExtra("firebaseIndex", "Parties/party/${party.pid}")
-                        startActivity(intent)
+                        startActivity(intent)*/
+                        changeIntent(position)
                     }
                 }
                 recyclerView.adapter = adapter
@@ -178,11 +189,12 @@ class PartiesFragment : Fragment() {
                 adapter = MyPartyAdapter(option)
                 adapter.itemClickListener = object : MyPartyAdapter.OnItemClickListener {
                     override fun onItemClick(position: Int) {
-                        val intent = Intent(activity, PartyContentActivity::class.java)
+                        /*val intent = Intent(activity, PartyContentActivity::class.java)
                         val party = adapter.getItem(position)
                         intent.putExtra("party", party)
                         intent.putExtra("firebaseIndex", "Parties/party/${party.pid}")
-                        startActivity(intent)
+                        startActivity(intent)*/
+                        changeIntent(position)
                     }
                 }
                 recyclerView.adapter = adapter
@@ -201,11 +213,12 @@ class PartiesFragment : Fragment() {
                 adapter = MyPartyAdapter(option)
                 adapter.itemClickListener = object : MyPartyAdapter.OnItemClickListener {
                     override fun onItemClick(position: Int) {
-                        val intent = Intent(activity, PartyContentActivity::class.java)
+                        /*val intent = Intent(activity, PartyContentActivity::class.java)
                         val party = adapter.getItem(position)
                         intent.putExtra("party", party)
                         intent.putExtra("firebaseIndex", "Parties/party/${party.pid}")
-                        startActivity(intent)
+                        startActivity(intent)*/
+                        changeIntent(position)
                     }
                 }
                 recyclerView.adapter = adapter
@@ -224,11 +237,12 @@ class PartiesFragment : Fragment() {
                 adapter = MyPartyAdapter(option)
                 adapter.itemClickListener = object : MyPartyAdapter.OnItemClickListener {
                     override fun onItemClick(position: Int) {
-                        val intent = Intent(activity, PartyContentActivity::class.java)
+                        /*val intent = Intent(activity, PartyContentActivity::class.java)
                         val party = adapter.getItem(position)
                         intent.putExtra("party", party)
                         intent.putExtra("firebaseIndex", "Parties/party/${party.pid}")
-                        startActivity(intent)
+                        startActivity(intent)*/
+                        changeIntent(position)
                     }
                 }
                 recyclerView.adapter = adapter
@@ -247,11 +261,12 @@ class PartiesFragment : Fragment() {
                 adapter = MyPartyAdapter(option)
                 adapter.itemClickListener = object : MyPartyAdapter.OnItemClickListener {
                     override fun onItemClick(position: Int) {
-                        val intent = Intent(activity, PartyContentActivity::class.java)
+                        /*val intent = Intent(activity, PartyContentActivity::class.java)
                         val party = adapter.getItem(position)
                         intent.putExtra("party", party)
                         intent.putExtra("firebaseIndex", "Parties/party/${party.pid}")
-                        startActivity(intent)
+                        startActivity(intent)*/
+                        changeIntent(position)
                     }
                 }
                 recyclerView.adapter = adapter
@@ -271,11 +286,12 @@ class PartiesFragment : Fragment() {
                 adapter = MyPartyAdapter(option)
                 adapter.itemClickListener = object : MyPartyAdapter.OnItemClickListener {
                     override fun onItemClick(position: Int) {
-                        val intent = Intent(activity, PartyContentActivity::class.java)
+                        /*val intent = Intent(activity, PartyContentActivity::class.java)
                         val party = adapter.getItem(position)
                         intent.putExtra("party", party)
                         intent.putExtra("firebaseIndex", "Parties/party/${party.pid}")
-                        startActivity(intent)
+                        startActivity(intent)*/
+                        changeIntent(position)
                     }
                 }
                 recyclerView.adapter = adapter
@@ -294,11 +310,12 @@ class PartiesFragment : Fragment() {
                 adapter = MyPartyAdapter(option)
                 adapter.itemClickListener = object : MyPartyAdapter.OnItemClickListener {
                     override fun onItemClick(position: Int) {
-                        val intent = Intent(activity, PartyContentActivity::class.java)
+                        /*val intent = Intent(activity, PartyContentActivity::class.java)
                         val party = adapter.getItem(position)
                         intent.putExtra("party", party)
                         intent.putExtra("firebaseIndex", "Parties/party/${party.pid}")
-                        startActivity(intent)
+                        startActivity(intent)*/
+                        changeIntent(position)
                     }
                 }
                 recyclerView.adapter = adapter
@@ -317,11 +334,12 @@ class PartiesFragment : Fragment() {
                 adapter = MyPartyAdapter(option)
                 adapter.itemClickListener = object : MyPartyAdapter.OnItemClickListener {
                     override fun onItemClick(position: Int) {
-                        val intent = Intent(activity, PartyContentActivity::class.java)
+                        /*val intent = Intent(activity, PartyContentActivity::class.java)
                         val party = adapter.getItem(position)
                         intent.putExtra("party", party)
                         intent.putExtra("firebaseIndex", "Parties/party/${party.pid}")
-                        startActivity(intent)
+                        startActivity(intent)*/
+                        changeIntent(position)
                     }
                 }
                 recyclerView.adapter = adapter
@@ -340,11 +358,12 @@ class PartiesFragment : Fragment() {
                 adapter = MyPartyAdapter(option)
                 adapter.itemClickListener = object : MyPartyAdapter.OnItemClickListener {
                     override fun onItemClick(position: Int) {
-                        val intent = Intent(activity, PartyContentActivity::class.java)
+                        /*val intent = Intent(activity, PartyContentActivity::class.java)
                         val party = adapter.getItem(position)
                         intent.putExtra("party", party)
                         intent.putExtra("firebaseIndex", "Parties/party/${party.pid}")
-                        startActivity(intent)
+                        startActivity(intent)*/
+                        changeIntent(position)
                     }
                 }
                 recyclerView.adapter = adapter
@@ -363,11 +382,12 @@ class PartiesFragment : Fragment() {
                 adapter = MyPartyAdapter(option)
                 adapter.itemClickListener = object : MyPartyAdapter.OnItemClickListener {
                     override fun onItemClick(position: Int) {
-                        val intent = Intent(activity, PartyContentActivity::class.java)
+                        /*val intent = Intent(activity, PartyContentActivity::class.java)
                         val party = adapter.getItem(position)
                         intent.putExtra("party", party)
                         intent.putExtra("firebaseIndex", "Parties/party/${party.pid}")
-                        startActivity(intent)
+                        startActivity(intent)*/
+                        changeIntent(position)
                     }
                 }
                 recyclerView.adapter = adapter
@@ -386,11 +406,12 @@ class PartiesFragment : Fragment() {
                 adapter = MyPartyAdapter(option)
                 adapter.itemClickListener = object : MyPartyAdapter.OnItemClickListener {
                     override fun onItemClick(position: Int) {
-                        val intent = Intent(activity, PartyContentActivity::class.java)
+                        /*val intent = Intent(activity, PartyContentActivity::class.java)
                         val party = adapter.getItem(position)
                         intent.putExtra("party", party)
                         intent.putExtra("firebaseIndex", "Parties/party/${party.pid}")
-                        startActivity(intent)
+                        startActivity(intent)*/
+                        changeIntent(position)
                     }
                 }
                 recyclerView.adapter = adapter
@@ -409,11 +430,12 @@ class PartiesFragment : Fragment() {
                 adapter = MyPartyAdapter(option)
                 adapter.itemClickListener = object : MyPartyAdapter.OnItemClickListener {
                     override fun onItemClick(position: Int) {
-                        val intent = Intent(activity, PartyContentActivity::class.java)
+                        /*val intent = Intent(activity, PartyContentActivity::class.java)
                         val party = adapter.getItem(position)
                         intent.putExtra("party", party)
                         intent.putExtra("firebaseIndex", "Parties/party/${party.pid}")
-                        startActivity(intent)
+                        startActivity(intent)*/
+                        changeIntent(position)
                     }
                 }
                 recyclerView.adapter = adapter
@@ -433,11 +455,12 @@ class PartiesFragment : Fragment() {
                 adapter = MyPartyAdapter(option)
                 adapter.itemClickListener = object : MyPartyAdapter.OnItemClickListener {
                     override fun onItemClick(position: Int) {
-                        val intent = Intent(activity, PartyContentActivity::class.java)
+                        /*val intent = Intent(activity, PartyContentActivity::class.java)
                         val party = adapter.getItem(position)
                         intent.putExtra("party", party)
                         intent.putExtra("firebaseIndex", "Parties/party/${party.pid}")
-                        startActivity(intent)
+                        startActivity(intent)*/
+                        changeIntent(position)
                     }
                 }
                 recyclerView.adapter = adapter
@@ -456,11 +479,12 @@ class PartiesFragment : Fragment() {
                 adapter = MyPartyAdapter(option)
                 adapter.itemClickListener = object : MyPartyAdapter.OnItemClickListener {
                     override fun onItemClick(position: Int) {
-                        val intent = Intent(activity, PartyContentActivity::class.java)
+                        /*val intent = Intent(activity, PartyContentActivity::class.java)
                         val party = adapter.getItem(position)
                         intent.putExtra("party", party)
                         intent.putExtra("firebaseIndex", "Parties/party/${party.pid}")
-                        startActivity(intent)
+                        startActivity(intent)*/
+                        changeIntent(position)
                     }
                 }
                 recyclerView.adapter = adapter
@@ -479,11 +503,12 @@ class PartiesFragment : Fragment() {
                 adapter = MyPartyAdapter(option)
                 adapter.itemClickListener = object : MyPartyAdapter.OnItemClickListener {
                     override fun onItemClick(position: Int) {
-                        val intent = Intent(activity, PartyContentActivity::class.java)
+                        /*val intent = Intent(activity, PartyContentActivity::class.java)
                         val party = adapter.getItem(position)
                         intent.putExtra("party", party)
                         intent.putExtra("firebaseIndex", "Parties/party/${party.pid}")
-                        startActivity(intent)
+                        startActivity(intent)*/
+                        changeIntent(position)
                     }
                 }
                 recyclerView.adapter = adapter
@@ -502,11 +527,12 @@ class PartiesFragment : Fragment() {
                 adapter = MyPartyAdapter(option)
                 adapter.itemClickListener = object : MyPartyAdapter.OnItemClickListener {
                     override fun onItemClick(position: Int) {
-                        val intent = Intent(activity, PartyContentActivity::class.java)
+                       /* val intent = Intent(activity, PartyContentActivity::class.java)
                         val party = adapter.getItem(position)
                         intent.putExtra("party", party)
                         intent.putExtra("firebaseIndex", "Parties/party/${party.pid}")
-                        startActivity(intent)
+                        startActivity(intent)*/
+                        changeIntent(position)
                     }
                 }
                 recyclerView.adapter = adapter
@@ -525,11 +551,12 @@ class PartiesFragment : Fragment() {
                 adapter = MyPartyAdapter(option)
                 adapter.itemClickListener = object : MyPartyAdapter.OnItemClickListener {
                     override fun onItemClick(position: Int) {
-                        val intent = Intent(activity, PartyContentActivity::class.java)
+                      /*  val intent = Intent(activity, PartyContentActivity::class.java)
                         val party = adapter.getItem(position)
                         intent.putExtra("party", party)
                         intent.putExtra("firebaseIndex", "Parties/party/${party.pid}")
-                        startActivity(intent)
+                        startActivity(intent)*/
+                        changeIntent(position)
                     }
                 }
                 recyclerView.adapter = adapter
@@ -548,11 +575,12 @@ class PartiesFragment : Fragment() {
                 adapter = MyPartyAdapter(option)
                 adapter.itemClickListener = object : MyPartyAdapter.OnItemClickListener {
                     override fun onItemClick(position: Int) {
-                        val intent = Intent(activity, PartyContentActivity::class.java)
+                        /*val intent = Intent(activity, PartyContentActivity::class.java)
                         val party = adapter.getItem(position)
                         intent.putExtra("party", party)
                         intent.putExtra("firebaseIndex", "Parties/party/${party.pid}")
-                        startActivity(intent)
+                        startActivity(intent)*/
+                        changeIntent(position)
                     }
                 }
                 recyclerView.adapter = adapter
@@ -572,11 +600,12 @@ class PartiesFragment : Fragment() {
                 adapter = MyPartyAdapter(option)
                 adapter.itemClickListener = object : MyPartyAdapter.OnItemClickListener {
                     override fun onItemClick(position: Int) {
-                        val intent = Intent(activity, PartyContentActivity::class.java)
+                        /*val intent = Intent(activity, PartyContentActivity::class.java)
                         val party = adapter.getItem(position)
                         intent.putExtra("party", party)
                         intent.putExtra("firebaseIndex", "Parties/party/${party.pid}")
-                        startActivity(intent)
+                        startActivity(intent)*/
+                        changeIntent(position)
                     }
                 }
                 recyclerView.adapter = adapter
@@ -595,11 +624,12 @@ class PartiesFragment : Fragment() {
                 adapter = MyPartyAdapter(option)
                 adapter.itemClickListener = object : MyPartyAdapter.OnItemClickListener {
                     override fun onItemClick(position: Int) {
-                        val intent = Intent(activity, PartyContentActivity::class.java)
+                       /* val intent = Intent(activity, PartyContentActivity::class.java)
                         val party = adapter.getItem(position)
                         intent.putExtra("party", party)
                         intent.putExtra("firebaseIndex", "Parties/party/${party.pid}")
-                        startActivity(intent)
+                        startActivity(intent)*/
+                        changeIntent(position)
                     }
                 }
                 recyclerView.adapter = adapter
@@ -618,11 +648,12 @@ class PartiesFragment : Fragment() {
                 adapter = MyPartyAdapter(option)
                 adapter.itemClickListener = object : MyPartyAdapter.OnItemClickListener {
                     override fun onItemClick(position: Int) {
-                        val intent = Intent(activity, PartyContentActivity::class.java)
+                        /*val intent = Intent(activity, PartyContentActivity::class.java)
                         val party = adapter.getItem(position)
                         intent.putExtra("party", party)
                         intent.putExtra("firebaseIndex", "Parties/party/${party.pid}")
-                        startActivity(intent)
+                        startActivity(intent)*/
+                        changeIntent(position)
                     }
                 }
                 recyclerView.adapter = adapter
@@ -641,11 +672,12 @@ class PartiesFragment : Fragment() {
                 adapter = MyPartyAdapter(option)
                 adapter.itemClickListener = object : MyPartyAdapter.OnItemClickListener {
                     override fun onItemClick(position: Int) {
-                        val intent = Intent(activity, PartyContentActivity::class.java)
+                        /*val intent = Intent(activity, PartyContentActivity::class.java)
                         val party = adapter.getItem(position)
                         intent.putExtra("party", party)
                         intent.putExtra("firebaseIndex", "Parties/party/${party.pid}")
-                        startActivity(intent)
+                        startActivity(intent)*/
+                        changeIntent(position)
                     }
                 }
                 recyclerView.adapter = adapter
@@ -664,11 +696,12 @@ class PartiesFragment : Fragment() {
                 adapter = MyPartyAdapter(option)
                 adapter.itemClickListener = object : MyPartyAdapter.OnItemClickListener {
                     override fun onItemClick(position: Int) {
-                        val intent = Intent(activity, PartyContentActivity::class.java)
+                        /*val intent = Intent(activity, PartyContentActivity::class.java)
                         val party = adapter.getItem(position)
                         intent.putExtra("party", party)
                         intent.putExtra("firebaseIndex", "Parties/party/${party.pid}")
-                        startActivity(intent)
+                        startActivity(intent)*/
+                        changeIntent(position)
                     }
                 }
                 recyclerView.adapter = adapter
@@ -687,11 +720,12 @@ class PartiesFragment : Fragment() {
                 adapter = MyPartyAdapter(option)
                 adapter.itemClickListener = object : MyPartyAdapter.OnItemClickListener {
                     override fun onItemClick(position: Int) {
-                        val intent = Intent(activity, PartyContentActivity::class.java)
+                        /*val intent = Intent(activity, PartyContentActivity::class.java)
                         val party = adapter.getItem(position)
                         intent.putExtra("party", party)
                         intent.putExtra("firebaseIndex", "Parties/party/${party.pid}")
-                        startActivity(intent)
+                        startActivity(intent)*/
+                        changeIntent(position)
                     }
                 }
                 recyclerView.adapter = adapter
