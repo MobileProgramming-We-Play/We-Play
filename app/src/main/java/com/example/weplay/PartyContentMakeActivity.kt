@@ -35,6 +35,8 @@ class PartyContentMakeActivity : AppCompatActivity() {
                     val newParty = Party(result.result.childrenCount.toInt(), "", title, 0, 1, HashMap(), content, 0.0, 0.0, "", "")
                     Firebase.database.getReference("Parties/party/${result.result.childrenCount}")
                         .setValue(newParty)
+
+                    finish()
                 }
             }
 
