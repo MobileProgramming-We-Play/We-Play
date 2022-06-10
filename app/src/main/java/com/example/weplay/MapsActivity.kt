@@ -86,9 +86,10 @@ class MapsActivity : AppCompatActivity() {
     }
 
     private fun initLayout() {
-        val detailedPlace = inputDetailedPlace.text.toString()
 
         binding.mapbtn.setOnClickListener {
+            val detailedPlace = inputDetailedPlace.text.toString()
+
             if (::location.isInitialized && detailedPlace.isNotEmpty()) {
                 val intent = Intent(this, PartyContentMakeActivity::class.java).apply {
                     putExtra("latitude", location.latitude)
