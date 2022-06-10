@@ -49,6 +49,7 @@ class PartyContentMakeActivity : AppCompatActivity() {
             val latitude = intent.getDoubleExtra("latitude", 0.0)
             val longitude = intent.getDoubleExtra("longitude", 0.0)
             val pdate = intent.getLongExtra("pdate", 0)
+            val pcity = intent.getStringExtra("pcity")
 
             partyCreateBtn.setOnClickListener {
 
@@ -64,7 +65,7 @@ class PartyContentMakeActivity : AppCompatActivity() {
                         val newParty = Party(
                             result.result.childrenCount.toInt(),
                             "없음", title, pdate, participantsNum, HashMap(), content,
-                            latitude, longitude, pSports!!, "없음"
+                            latitude, longitude, pSports!!, pcity!!
                         )
                         Firebase.database.getReference("Parties/party/${result.result.childrenCount.toInt()}")
                             .setValue(newParty)

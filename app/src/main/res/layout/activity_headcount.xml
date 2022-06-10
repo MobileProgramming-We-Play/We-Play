@@ -52,6 +52,20 @@
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp" />
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/seoulGuRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="200dp">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+        <TextView
+            android:id="@+id/selectedGuArea"
+            android:layout_margin="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""/>
+
 
         <Button
             android:id="@+id/btnCountHead"
