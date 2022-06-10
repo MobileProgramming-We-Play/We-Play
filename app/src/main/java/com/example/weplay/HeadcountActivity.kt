@@ -1,25 +1,18 @@
 package com.example.weplay
 
 import android.content.Intent
-import android.content.res.Resources
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.EditText
-import android.widget.NumberPicker
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.weplay.databinding.ActivityHeadcountBinding
-import com.example.weplay.databinding.ActivitySportsBinding
 import com.example.weplay.databinding.PickerDlgBinding
-import com.example.weplay.domain.Gu
-import com.google.android.gms.common.config.GservicesValue.value
+import com.example.weplay.domain.BaseCity
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
-import kotlinx.android.synthetic.main.activity_headcount.*
-import kotlinx.android.synthetic.main.fragment_parties.*
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -34,8 +27,8 @@ class HeadcountActivity : AppCompatActivity() {
     private var isTimeSet = false
     private var selectedGu = ""
 
-    private lateinit var adapter: GuAdapter
-    private val gus = ArrayList<Gu>()
+    private lateinit var adapter: BaseCityAdapter
+    private val gus = ArrayList<BaseCity>()
     private val koreanGu = arrayOf("종로구", "중구", "용산구", "성동구", "광진구", "동대문구", "중랑구", "성북구",
         "강북구", "도봉구", "노원구", "은평구", "서대문구", "마포구", "양천구", "강서구", "구로구",
         "금천구", "영등포구", "동작구", "관악구", "서초구", "강남구", "송파구", "강동구")
@@ -51,14 +44,14 @@ class HeadcountActivity : AppCompatActivity() {
     }
 
     private fun initData() {
-        koreanGu.forEach { guName -> gus.add(Gu(guName)) }
+        koreanGu.forEach { guName -> gus.add(BaseCity(guName)) }
     }
 
     private fun initRecyclerView() {
         with(binding) {
-            adapter = GuAdapter(gus)
-            adapter.listener = object : GuAdapter.OnItemClickListener {
-                override fun onItemClick(data: Gu, position: Int) {
+            adapter = BaseCityAdapter(gus)
+            adapter.listener = object : BaseCityAdapter.OnItemClickListener {
+                override fun onItemClick(data: BaseCity, position: Int) {
                     selectedGu = data.name
                     selectedGuArea.text = selectedGu
                 }

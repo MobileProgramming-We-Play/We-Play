@@ -4,12 +4,12 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.weplay.databinding.RowSeoulGuBinding
-import com.example.weplay.domain.Gu
+import com.example.weplay.domain.BaseCity
 
-class GuAdapter(val items: ArrayList<Gu>) : RecyclerView.Adapter<GuAdapter.ViewHolder>() {
+class BaseCityAdapter(val items: ArrayList<BaseCity>) : RecyclerView.Adapter<BaseCityAdapter.ViewHolder>() {
 
     interface OnItemClickListener {
-        fun onItemClick(data: Gu, position: Int)
+        fun onItemClick(data: BaseCity, position: Int)
     }
 
     lateinit var listener: OnItemClickListener
