@@ -101,6 +101,7 @@ class MapsActivity : AppCompatActivity() {
                     putExtra("pcity", intent.getStringExtra("pcity"))
                 }
                 startActivity(intent)
+                finish()
             }
 
         }

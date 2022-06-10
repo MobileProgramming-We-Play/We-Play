@@ -8,19 +8,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.weplay.databinding.ActivityHeadcountBinding
 import com.example.weplay.databinding.PickerDlgBinding
 import com.example.weplay.domain.BaseCity
-import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.ktx.database
-import com.google.firebase.ktx.Firebase
+
 import java.util.*
 import kotlin.collections.ArrayList
 
 
 class HeadcountActivity : AppCompatActivity() {
     lateinit var binding: ActivityHeadcountBinding
-    lateinit var user: FirebaseUser
-    lateinit var userList: DatabaseReference
 
     private var selectedCnt = 0
     private val calendar = Calendar.getInstance()
@@ -66,9 +60,6 @@ class HeadcountActivity : AppCompatActivity() {
     }
 
     private fun initLayout() {
-        user = Firebase.auth.currentUser!!
-        userList = Firebase.database.getReference("Parties/party")
-        val id = user.uid
 
         with(binding) {
             numberPicker.minValue = 1
@@ -106,6 +97,7 @@ class HeadcountActivity : AppCompatActivity() {
                         putExtra("pcity", selectedGu)
                     }
                     startActivity(intent)
+                    finish()
                 }
             }
         }
