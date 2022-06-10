@@ -75,6 +75,7 @@ class PartyContentMakeActivity : AppCompatActivity() {
 
                         val intent = Intent(this@PartyContentMakeActivity, MainActivity::class.java)
                         startActivity(intent)
+                        finish()
                     }
                 }
 
