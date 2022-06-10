@@ -98,6 +98,7 @@ class PartyContentActivity : AppCompatActivity() {
             partyParticipantsNum.text = "${participants.size}/${party.pparticipantsNum}"
 
             calendar = Calendar.getInstance()
+            val curTime = calendar.timeInMillis
             calendar.timeInMillis = party.pdate
 
             val year = calendar.get(Calendar.YEAR)
@@ -145,7 +146,8 @@ class PartyContentActivity : AppCompatActivity() {
                             it?.uid == user.uid
                         }
                         .count()
-                        .toInt() != 0
+                        .toInt() != 0 ||
+                curTime >= party.pdate
             ) {
                 partyJoinBtn.isEnabled = false
                 partyJoinBtn.isClickable = false
