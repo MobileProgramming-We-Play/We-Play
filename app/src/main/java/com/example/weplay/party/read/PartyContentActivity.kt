@@ -104,8 +104,14 @@ class PartyContentActivity : AppCompatActivity() {
             val day = calendar.get(Calendar.DATE)
             val hour = calendar.get(Calendar.HOUR)
             val minute = calendar.get(Calendar.MINUTE)
+            val amPm = calendar.get(Calendar.AM_PM)
 
-            partyDate.text = "${year}. %02d.%02d, %02d:%02d".format(month, day, hour, minute)
+            if (amPm == Calendar.AM) {
+                partyDate.text = "${year}. %02d.%02d, 오전 %02d:%02d".format(month, day, hour, minute)
+            } else {
+                partyDate.text = "${year}. %02d.%02d, 오후 %02d:%02d".format(month, day, hour, minute)
+            }
+
 
             participants.values
                 .stream()
