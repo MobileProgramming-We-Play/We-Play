@@ -55,7 +55,6 @@ class PartyContentMakeActivity : AppCompatActivity() {
                     .get()
 
                 result.addOnSuccessListener {
-//                Log.i("크기", result.result.childrenCount.toString())
 
                     val title = inputPartyTitle.text.toString()
                     val content = inputPartyContent.text.toString()
