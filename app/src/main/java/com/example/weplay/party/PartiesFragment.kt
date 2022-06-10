@@ -59,20 +59,13 @@ class PartiesFragment : Fragment() {
             adapter = MyPartyAdapter(option)
 
             fabMain.setOnClickListener{
-                /*val intent = Intent(requireActivity(), SportsActivity::class.java)
-                requireActivity().startActivity(intent)*/
                 val intent = Intent(activity, SportsActivity::class.java)
                 startActivity(intent)
             }
 
             adapter.itemClickListener = object : MyPartyAdapter.OnItemClickListener {
                 override fun onItemClick(position: Int) {
-                    val intent = Intent(activity, PartyContentActivity::class.java)
-                    val party = adapter.getItem(position)
-                    intent.putExtra("party", party)
-                    intent.putExtra("firebaseIndex", "Parties/party/${party.pid}")
-//                    startActivity(intent)
-                    activityResultLauncher.launch(intent)
+                    changeIntent(position)
                 }
             }
             recyclerView.layoutManager = layoutManager
@@ -91,20 +84,46 @@ class PartiesFragment : Fragment() {
                 adapter = MyPartyAdapter(option)
                 adapter.itemClickListener = object : MyPartyAdapter.OnItemClickListener {
                     override fun onItemClick(position: Int) {
-                        val intent = Intent(activity, PartyContentActivity::class.java)
-                        val party = adapter.getItem(position)
-                        intent.putExtra("party", party)
-                        intent.putExtra("firebaseIndex", "Parties/party/${party.pid}")
-                        startActivity(intent)
+                        changeIntent(position)
                     }
                 }
                 recyclerView.adapter = adapter
                 adapter.startListening()
             }
 
+            val engGu = arrayOf(jongrogu, junggu, yongsangu, seongdonggu, gwangjingu,
+                dongdaemungu, jungranggu, seongbukgu, gangbukgu, dobonggu, nowongu, eunpyeonggu,
+                seodaemungu, mapogu, yangcheongu, gangseogu, gurogu, geumcheongu, yeongdeungpogu,
+                dongjakgu, gwanakgu, seochogu, gangnamgu, songpagu, gangdonggu)
+
+            val koreanGu = arrayOf("종로구", "중구", "용산구", "성동구", "광진구", "동대문구", "중랑구", "성북구",
+                "강북구", "도봉구", "노원구", "은평구", "서대문구", "마포구", "양천구", "강서구", "구로구",
+                "금천구", "영등포구", "동작구", "관악구", "서초구", "강남구", "송파구", "강동구")
+
+            engGu.forEachIndexed { index, gu ->
+                gu.setOnClickListener {
+                    if (!findQuery)
+                        findQuery = true
+                    if (adapter != null)
+                        adapter.stopListening()
+                    val query: Query =
+                        rdb.orderByChild("pcity").equalTo(koreanGu[index])
+                    val option = FirebaseRecyclerOptions.Builder<Party>()
+                        .setQuery(query, Party::class.java)
+                        .build()
+
+                    adapter = MyPartyAdapter(option)
+                    adapter.itemClickListener = object : MyPartyAdapter.OnItemClickListener {
+                        override fun onItemClick(position: Int) {
+                            changeIntent(position)
+                        }
+                    }
+                    recyclerView.adapter = adapter
+                    adapter.startListening()
+                }
+            }
             ///지역 버튼
             all.setOnClickListener {
-
                 if (!findQuery)
                     findQuery = true
                 if (adapter != null)
@@ -117,596 +136,23 @@ class PartiesFragment : Fragment() {
                 adapter = MyPartyAdapter(option)
                 adapter.itemClickListener = object : MyPartyAdapter.OnItemClickListener {
                     override fun onItemClick(position: Int) {
-                        val intent = Intent(activity, PartyContentActivity::class.java)
-                        val party = adapter.getItem(position)
-                        intent.putExtra("party", party)
-                        intent.putExtra("firebaseIndex", "Parties/party/${party.pid}")
-                        startActivity(intent)
+                        changeIntent(position)
                     }
                 }
                 recyclerView.adapter = adapter
                 adapter.startListening()
             }
-            jongrogu.setOnClickListener {
-                if (!findQuery)
-                    findQuery = true
-                if (adapter != null)
-                    adapter.stopListening()
-                val query: Query =
-                    rdb.orderByChild("pcity").equalTo("종로구")
-                val option = FirebaseRecyclerOptions.Builder<Party>()
-                    .setQuery(query, Party::class.java)
-                    .build()
-                adapter = MyPartyAdapter(option)
-                adapter.itemClickListener = object : MyPartyAdapter.OnItemClickListener {
-                    override fun onItemClick(position: Int) {
-                        val intent = Intent(activity, PartyContentActivity::class.java)
-                        val party = adapter.getItem(position)
-                        intent.putExtra("party", party)
-                        intent.putExtra("firebaseIndex", "Parties/party/${party.pid}")
-                        startActivity(intent)
-                    }
-                }
-                recyclerView.adapter = adapter
-                adapter.startListening()
-            }
-            junggu.setOnClickListener {
-                if (!findQuery)
-                    findQuery = true
-                if (adapter != null)
-                    adapter.stopListening()
-                val query: Query =
-                    rdb.orderByChild("pcity").equalTo("중구")
-                val option = FirebaseRecyclerOptions.Builder<Party>()
-                    .setQuery(query, Party::class.java)
-                    .build()
-                adapter = MyPartyAdapter(option)
-                adapter.itemClickListener = object : MyPartyAdapter.OnItemClickListener {
-                    override fun onItemClick(position: Int) {
-                        val intent = Intent(activity, PartyContentActivity::class.java)
-                        val party = adapter.getItem(position)
-                        intent.putExtra("party", party)
-                        intent.putExtra("firebaseIndex", "Parties/party/${party.pid}")
-                        startActivity(intent)
-                    }
-                }
-                recyclerView.adapter = adapter
-                adapter.startListening()
-            }
-            yongsangu.setOnClickListener {
-                if (!findQuery)
-                    findQuery = true
-                if (adapter != null)
-                    adapter.stopListening()
-                val query: Query =
-                    rdb.orderByChild("pcity").equalTo("용산구")
-                val option = FirebaseRecyclerOptions.Builder<Party>()
-                    .setQuery(query, Party::class.java)
-                    .build()
-                adapter = MyPartyAdapter(option)
-                adapter.itemClickListener = object : MyPartyAdapter.OnItemClickListener {
-                    override fun onItemClick(position: Int) {
-                        val intent = Intent(activity, PartyContentActivity::class.java)
-                        val party = adapter.getItem(position)
-                        intent.putExtra("party", party)
-                        intent.putExtra("firebaseIndex", "Parties/party/${party.pid}")
-                        startActivity(intent)
-                    }
-                }
-                recyclerView.adapter = adapter
-                adapter.startListening()
-            }
-            seongdonggu.setOnClickListener {
-                if (!findQuery)
-                    findQuery = true
-                if (adapter != null)
-                    adapter.stopListening()
-                val query: Query =
-                    rdb.orderByChild("pcity").equalTo("성동구")
-                val option = FirebaseRecyclerOptions.Builder<Party>()
-                    .setQuery(query, Party::class.java)
-                    .build()
-                adapter = MyPartyAdapter(option)
-                adapter.itemClickListener = object : MyPartyAdapter.OnItemClickListener {
-                    override fun onItemClick(position: Int) {
-                        val intent = Intent(activity, PartyContentActivity::class.java)
-                        val party = adapter.getItem(position)
-                        intent.putExtra("party", party)
-                        intent.putExtra("firebaseIndex", "Parties/party/${party.pid}")
-                        startActivity(intent)
-                    }
-                }
-                recyclerView.adapter = adapter
-                adapter.startListening()
-            }
-            gwangjingu.setOnClickListener {
-                if (!findQuery)
-                    findQuery = true
-                if (adapter != null)
-                    adapter.stopListening()
-                val query: Query =
-                    rdb.orderByChild("pcity").equalTo("광진구")
-                val option = FirebaseRecyclerOptions.Builder<Party>()
-                    .setQuery(query, Party::class.java)
-                    .build()
-                adapter = MyPartyAdapter(option)
-                adapter.itemClickListener = object : MyPartyAdapter.OnItemClickListener {
-                    override fun onItemClick(position: Int) {
-                        val intent = Intent(activity, PartyContentActivity::class.java)
-                        val party = adapter.getItem(position)
-                        intent.putExtra("party", party)
-                        intent.putExtra("firebaseIndex", "Parties/party/${party.pid}")
-                        startActivity(intent)
-                    }
-                }
-                recyclerView.adapter = adapter
-                adapter.startListening()
-            }
-            dongdaemungu.setOnClickListener {
-                if (!findQuery)
-                    findQuery = true
-                if (adapter != null)
-                    adapter.stopListening()
-                val query: Query =
-                    rdb.orderByChild("pcity").equalTo("동대문구")
-                val option = FirebaseRecyclerOptions.Builder<Party>()
-                    .setQuery(query, Party::class.java)
-                    .build()
-                adapter = MyPartyAdapter(option)
-                adapter.itemClickListener = object : MyPartyAdapter.OnItemClickListener {
-                    override fun onItemClick(position: Int) {
-                        val intent = Intent(activity, PartyContentActivity::class.java)
-                        val party = adapter.getItem(position)
-                        intent.putExtra("party", party)
-                        intent.putExtra("firebaseIndex", "Parties/party/${party.pid}")
-                        startActivity(intent)
-                    }
-                }
-                recyclerView.adapter = adapter
-                adapter.startListening()
-            }
-            //////////
-            jungranggu.setOnClickListener {
-                if (!findQuery)
-                    findQuery = true
-                if (adapter != null)
-                    adapter.stopListening()
-                val query: Query =
-                    rdb.orderByChild("pcity").equalTo("중랑구")
-                val option = FirebaseRecyclerOptions.Builder<Party>()
-                    .setQuery(query, Party::class.java)
-                    .build()
-                adapter = MyPartyAdapter(option)
-                adapter.itemClickListener = object : MyPartyAdapter.OnItemClickListener {
-                    override fun onItemClick(position: Int) {
-                        val intent = Intent(activity, PartyContentActivity::class.java)
-                        val party = adapter.getItem(position)
-                        intent.putExtra("party", party)
-                        intent.putExtra("firebaseIndex", "Parties/party/${party.pid}")
-                        startActivity(intent)
-                    }
-                }
-                recyclerView.adapter = adapter
-                adapter.startListening()
-            }
-            seongbukgu.setOnClickListener {
-                if (!findQuery)
-                    findQuery = true
-                if (adapter != null)
-                    adapter.stopListening()
-                val query: Query =
-                    rdb.orderByChild("pcity").equalTo("성북구")
-                val option = FirebaseRecyclerOptions.Builder<Party>()
-                    .setQuery(query, Party::class.java)
-                    .build()
-                adapter = MyPartyAdapter(option)
-                adapter.itemClickListener = object : MyPartyAdapter.OnItemClickListener {
-                    override fun onItemClick(position: Int) {
-                        val intent = Intent(activity, PartyContentActivity::class.java)
-                        val party = adapter.getItem(position)
-                        intent.putExtra("party", party)
-                        intent.putExtra("firebaseIndex", "Parties/party/${party.pid}")
-                        startActivity(intent)
-                    }
-                }
-                recyclerView.adapter = adapter
-                adapter.startListening()
-            }
-            gangbukgu.setOnClickListener {
-                if (!findQuery)
-                    findQuery = true
-                if (adapter != null)
-                    adapter.stopListening()
-                val query: Query =
-                    rdb.orderByChild("pcity").equalTo("강북구")
-                val option = FirebaseRecyclerOptions.Builder<Party>()
-                    .setQuery(query, Party::class.java)
-                    .build()
-                adapter = MyPartyAdapter(option)
-                adapter.itemClickListener = object : MyPartyAdapter.OnItemClickListener {
-                    override fun onItemClick(position: Int) {
-                        val intent = Intent(activity, PartyContentActivity::class.java)
-                        val party = adapter.getItem(position)
-                        intent.putExtra("party", party)
-                        intent.putExtra("firebaseIndex", "Parties/party/${party.pid}")
-                        startActivity(intent)
-                    }
-                }
-                recyclerView.adapter = adapter
-                adapter.startListening()
-            }
-            dobonggu.setOnClickListener {
-                if (!findQuery)
-                    findQuery = true
-                if (adapter != null)
-                    adapter.stopListening()
-                val query: Query =
-                    rdb.orderByChild("pcity").equalTo("도봉구")
-                val option = FirebaseRecyclerOptions.Builder<Party>()
-                    .setQuery(query, Party::class.java)
-                    .build()
-                adapter = MyPartyAdapter(option)
-                adapter.itemClickListener = object : MyPartyAdapter.OnItemClickListener {
-                    override fun onItemClick(position: Int) {
-                        val intent = Intent(activity, PartyContentActivity::class.java)
-                        val party = adapter.getItem(position)
-                        intent.putExtra("party", party)
-                        intent.putExtra("firebaseIndex", "Parties/party/${party.pid}")
-                        startActivity(intent)
-                    }
-                }
-                recyclerView.adapter = adapter
-                adapter.startListening()
-            }
-            nowongu.setOnClickListener {
-                if (!findQuery)
-                    findQuery = true
-                if (adapter != null)
-                    adapter.stopListening()
-                val query: Query =
-                    rdb.orderByChild("pcity").equalTo("노원구")
-                val option = FirebaseRecyclerOptions.Builder<Party>()
-                    .setQuery(query, Party::class.java)
-                    .build()
-                adapter = MyPartyAdapter(option)
-                adapter.itemClickListener = object : MyPartyAdapter.OnItemClickListener {
-                    override fun onItemClick(position: Int) {
-                        val intent = Intent(activity, PartyContentActivity::class.java)
-                        val party = adapter.getItem(position)
-                        intent.putExtra("party", party)
-                        intent.putExtra("firebaseIndex", "Parties/party/${party.pid}")
-                        startActivity(intent)
-                    }
-                }
-                recyclerView.adapter = adapter
-                adapter.startListening()
-            }
-            eunpyeonggu.setOnClickListener {
-                if (!findQuery)
-                    findQuery = true
-                if (adapter != null)
-                    adapter.stopListening()
-                val query: Query =
-                    rdb.orderByChild("pcity").equalTo("은평구")
-                val option = FirebaseRecyclerOptions.Builder<Party>()
-                    .setQuery(query, Party::class.java)
-                    .build()
-                adapter = MyPartyAdapter(option)
-                adapter.itemClickListener = object : MyPartyAdapter.OnItemClickListener {
-                    override fun onItemClick(position: Int) {
-                        val intent = Intent(activity, PartyContentActivity::class.java)
-                        val party = adapter.getItem(position)
-                        intent.putExtra("party", party)
-                        intent.putExtra("firebaseIndex", "Parties/party/${party.pid}")
-                        startActivity(intent)
-                    }
-                }
-                recyclerView.adapter = adapter
-                adapter.startListening()
-            }
-            seodaemungu.setOnClickListener {
-                if (!findQuery)
-                    findQuery = true
-                if (adapter != null)
-                    adapter.stopListening()
-                val query: Query =
-                    rdb.orderByChild("pcity").equalTo("서대문구")
-                val option = FirebaseRecyclerOptions.Builder<Party>()
-                    .setQuery(query, Party::class.java)
-                    .build()
-                adapter = MyPartyAdapter(option)
-                adapter.itemClickListener = object : MyPartyAdapter.OnItemClickListener {
-                    override fun onItemClick(position: Int) {
-                        val intent = Intent(activity, PartyContentActivity::class.java)
-                        val party = adapter.getItem(position)
-                        intent.putExtra("party", party)
-                        intent.putExtra("firebaseIndex", "Parties/party/${party.pid}")
-                        startActivity(intent)
-                    }
-                }
-                recyclerView.adapter = adapter
-                adapter.startListening()
-            }
-            /////////////
-            mapogu.setOnClickListener {
-                if (!findQuery)
-                    findQuery = true
-                if (adapter != null)
-                    adapter.stopListening()
-                val query: Query =
-                    rdb.orderByChild("pcity").equalTo("마포구")
-                val option = FirebaseRecyclerOptions.Builder<Party>()
-                    .setQuery(query, Party::class.java)
-                    .build()
-                adapter = MyPartyAdapter(option)
-                adapter.itemClickListener = object : MyPartyAdapter.OnItemClickListener {
-                    override fun onItemClick(position: Int) {
-                        val intent = Intent(activity, PartyContentActivity::class.java)
-                        val party = adapter.getItem(position)
-                        intent.putExtra("party", party)
-                        intent.putExtra("firebaseIndex", "Parties/party/${party.pid}")
-                        startActivity(intent)
-                    }
-                }
-                recyclerView.adapter = adapter
-                adapter.startListening()
-            }
-            yangcheongu.setOnClickListener {
-                if (!findQuery)
-                    findQuery = true
-                if (adapter != null)
-                    adapter.stopListening()
-                val query: Query =
-                    rdb.orderByChild("pcity").equalTo("양천구")
-                val option = FirebaseRecyclerOptions.Builder<Party>()
-                    .setQuery(query, Party::class.java)
-                    .build()
-                adapter = MyPartyAdapter(option)
-                adapter.itemClickListener = object : MyPartyAdapter.OnItemClickListener {
-                    override fun onItemClick(position: Int) {
-                        val intent = Intent(activity, PartyContentActivity::class.java)
-                        val party = adapter.getItem(position)
-                        intent.putExtra("party", party)
-                        intent.putExtra("firebaseIndex", "Parties/party/${party.pid}")
-                        startActivity(intent)
-                    }
-                }
-                recyclerView.adapter = adapter
-                adapter.startListening()
-            }
-            gangseogu.setOnClickListener {
-                if (!findQuery)
-                    findQuery = true
-                if (adapter != null)
-                    adapter.stopListening()
-                val query: Query =
-                    rdb.orderByChild("pcity").equalTo("강서구")
-                val option = FirebaseRecyclerOptions.Builder<Party>()
-                    .setQuery(query, Party::class.java)
-                    .build()
-                adapter = MyPartyAdapter(option)
-                adapter.itemClickListener = object : MyPartyAdapter.OnItemClickListener {
-                    override fun onItemClick(position: Int) {
-                        val intent = Intent(activity, PartyContentActivity::class.java)
-                        val party = adapter.getItem(position)
-                        intent.putExtra("party", party)
-                        intent.putExtra("firebaseIndex", "Parties/party/${party.pid}")
-                        startActivity(intent)
-                    }
-                }
-                recyclerView.adapter = adapter
-                adapter.startListening()
-            }
-            gurogu.setOnClickListener {
-                if (!findQuery)
-                    findQuery = true
-                if (adapter != null)
-                    adapter.stopListening()
-                val query: Query =
-                    rdb.orderByChild("pcity").equalTo("구로구")
-                val option = FirebaseRecyclerOptions.Builder<Party>()
-                    .setQuery(query, Party::class.java)
-                    .build()
-                adapter = MyPartyAdapter(option)
-                adapter.itemClickListener = object : MyPartyAdapter.OnItemClickListener {
-                    override fun onItemClick(position: Int) {
-                        val intent = Intent(activity, PartyContentActivity::class.java)
-                        val party = adapter.getItem(position)
-                        intent.putExtra("party", party)
-                        intent.putExtra("firebaseIndex", "Parties/party/${party.pid}")
-                        startActivity(intent)
-                    }
-                }
-                recyclerView.adapter = adapter
-                adapter.startListening()
-            }
-            geumcheongu.setOnClickListener {
-                if (!findQuery)
-                    findQuery = true
-                if (adapter != null)
-                    adapter.stopListening()
-                val query: Query =
-                    rdb.orderByChild("pcity").equalTo("금천구")
-                val option = FirebaseRecyclerOptions.Builder<Party>()
-                    .setQuery(query, Party::class.java)
-                    .build()
-                adapter = MyPartyAdapter(option)
-                adapter.itemClickListener = object : MyPartyAdapter.OnItemClickListener {
-                    override fun onItemClick(position: Int) {
-                        val intent = Intent(activity, PartyContentActivity::class.java)
-                        val party = adapter.getItem(position)
-                        intent.putExtra("party", party)
-                        intent.putExtra("firebaseIndex", "Parties/party/${party.pid}")
-                        startActivity(intent)
-                    }
-                }
-                recyclerView.adapter = adapter
-                adapter.startListening()
-            }
-            yeongdeungpogu.setOnClickListener {
-                if (!findQuery)
-                    findQuery = true
-                if (adapter != null)
-                    adapter.stopListening()
-                val query: Query =
-                    rdb.orderByChild("pcity").equalTo("영등포구")
-                val option = FirebaseRecyclerOptions.Builder<Party>()
-                    .setQuery(query, Party::class.java)
-                    .build()
-                adapter = MyPartyAdapter(option)
-                adapter.itemClickListener = object : MyPartyAdapter.OnItemClickListener {
-                    override fun onItemClick(position: Int) {
-                        val intent = Intent(activity, PartyContentActivity::class.java)
-                        val party = adapter.getItem(position)
-                        intent.putExtra("party", party)
-                        intent.putExtra("firebaseIndex", "Parties/party/${party.pid}")
-                        startActivity(intent)
-                    }
-                }
-                recyclerView.adapter = adapter
-                adapter.startListening()
-            }
-            /////////////
-            dongjakgu.setOnClickListener {
-                if (!findQuery)
-                    findQuery = true
-                if (adapter != null)
-                    adapter.stopListening()
-                val query: Query =
-                    rdb.orderByChild("pcity").equalTo("동작구")
-                val option = FirebaseRecyclerOptions.Builder<Party>()
-                    .setQuery(query, Party::class.java)
-                    .build()
-                adapter = MyPartyAdapter(option)
-                adapter.itemClickListener = object : MyPartyAdapter.OnItemClickListener {
-                    override fun onItemClick(position: Int) {
-                        val intent = Intent(activity, PartyContentActivity::class.java)
-                        val party = adapter.getItem(position)
-                        intent.putExtra("party", party)
-                        intent.putExtra("firebaseIndex", "Parties/party/${party.pid}")
-                        startActivity(intent)
-                    }
-                }
-                recyclerView.adapter = adapter
-                adapter.startListening()
-            }
-            gwanakgu.setOnClickListener {
-                if (!findQuery)
-                    findQuery = true
-                if (adapter != null)
-                    adapter.stopListening()
-                val query: Query =
-                    rdb.orderByChild("pcity").equalTo("관악구")
-                val option = FirebaseRecyclerOptions.Builder<Party>()
-                    .setQuery(query, Party::class.java)
-                    .build()
-                adapter = MyPartyAdapter(option)
-                adapter.itemClickListener = object : MyPartyAdapter.OnItemClickListener {
-                    override fun onItemClick(position: Int) {
-                        val intent = Intent(activity, PartyContentActivity::class.java)
-                        val party = adapter.getItem(position)
-                        intent.putExtra("party", party)
-                        intent.putExtra("firebaseIndex", "Parties/party/${party.pid}")
-                        startActivity(intent)
-                    }
-                }
-                recyclerView.adapter = adapter
-                adapter.startListening()
-            }
-            seochogu.setOnClickListener {
-                if (!findQuery)
-                    findQuery = true
-                if (adapter != null)
-                    adapter.stopListening()
-                val query: Query =
-                    rdb.orderByChild("pcity").equalTo("서초구")
-                val option = FirebaseRecyclerOptions.Builder<Party>()
-                    .setQuery(query, Party::class.java)
-                    .build()
-                adapter = MyPartyAdapter(option)
-                adapter.itemClickListener = object : MyPartyAdapter.OnItemClickListener {
-                    override fun onItemClick(position: Int) {
-                        val intent = Intent(activity, PartyContentActivity::class.java)
-                        val party = adapter.getItem(position)
-                        intent.putExtra("party", party)
-                        intent.putExtra("firebaseIndex", "Parties/party/${party.pid}")
-                        startActivity(intent)
-                    }
-                }
-                recyclerView.adapter = adapter
-                adapter.startListening()
-            }
-            gangnamgu.setOnClickListener {
-                if (!findQuery)
-                    findQuery = true
-                if (adapter != null)
-                    adapter.stopListening()
-                val query: Query =
-                    rdb.orderByChild("pcity").equalTo("강남구")
-                val option = FirebaseRecyclerOptions.Builder<Party>()
-                    .setQuery(query, Party::class.java)
-                    .build()
-                adapter = MyPartyAdapter(option)
-                adapter.itemClickListener = object : MyPartyAdapter.OnItemClickListener {
-                    override fun onItemClick(position: Int) {
-                        val intent = Intent(activity, PartyContentActivity::class.java)
-                        val party = adapter.getItem(position)
-                        intent.putExtra("party", party)
-                        intent.putExtra("firebaseIndex", "Parties/party/${party.pid}")
-                        startActivity(intent)
-                    }
-                }
-                recyclerView.adapter = adapter
-                adapter.startListening()
-            }
-            songpagu.setOnClickListener {
-                if (!findQuery)
-                    findQuery = true
-                if (adapter != null)
-                    adapter.stopListening()
-                val query: Query =
-                    rdb.orderByChild("pcity").equalTo("송파구")
-                val option = FirebaseRecyclerOptions.Builder<Party>()
-                    .setQuery(query, Party::class.java)
-                    .build()
-                adapter = MyPartyAdapter(option)
-                adapter.itemClickListener = object : MyPartyAdapter.OnItemClickListener {
-                    override fun onItemClick(position: Int) {
-                        val intent = Intent(activity, PartyContentActivity::class.java)
-                        val party = adapter.getItem(position)
-                        intent.putExtra("party", party)
-                        intent.putExtra("firebaseIndex", "Parties/party/${party.pid}")
-                        startActivity(intent)
-                    }
-                }
-                recyclerView.adapter = adapter
-                adapter.startListening()
-            }
-            gangdonggu.setOnClickListener {
-                if (!findQuery)
-                    findQuery = true
-                if (adapter != null)
-                    adapter.stopListening()
-                val query: Query =
-                    rdb.orderByChild("pcity").equalTo("강동구")
-                val option = FirebaseRecyclerOptions.Builder<Party>()
-                    .setQuery(query, Party::class.java)
-                    .build()
-                adapter = MyPartyAdapter(option)
-                adapter.itemClickListener = object : MyPartyAdapter.OnItemClickListener {
-                    override fun onItemClick(position: Int) {
-                        val intent = Intent(activity, PartyContentActivity::class.java)
-                        val party = adapter.getItem(position)
-                        intent.putExtra("party", party)
-                        intent.putExtra("firebaseIndex", "Parties/party/${party.pid}")
-                        startActivity(intent)
-                    }
-                }
-                recyclerView.adapter = adapter
-                adapter.startListening()
-            }
+
         }
         adapter.startListening()
+    }
+
+    private fun changeIntent(position: Int) {
+        val intent = Intent(activity, PartyContentActivity::class.java)
+        val party = adapter.getItem(position)
+        intent.putExtra("party", party)
+        intent.putExtra("firebaseIndex", "Parties/party/${party.pid}")
+        activityResultLauncher.launch(intent)
     }
 
 //    override fun onStart() {
