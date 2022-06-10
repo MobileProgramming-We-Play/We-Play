@@ -40,30 +40,40 @@ class JoinActivity : AppCompatActivity() {
                 gender = 1
             }
 
-            // Firebase Authentication에 추가 (email, password)
-            auth.createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this) { task ->
-                    if (task.isSuccessful) {
-                        val user = auth.currentUser
+            if (email == "") {
+                Toast.makeText(this, "이메일을 입력해주세요.", Toast.LENGTH_SHORT).show()
+            } else if (password == "") {
+                Toast.makeText(this, "비밀번호를 입력해주세요.", Toast.LENGTH_SHORT).show()
+            } else if (nickname == "") {
+                Toast.makeText(this, "닉네임을 입력해주세요.", Toast.LENGTH_SHORT).show()
+            } else {
+                // Firebase Authentication에 추가 (email, password)
+                auth.createUserWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(this) { task ->
+                        if (task.isSuccessful) {
+                            val user = auth.currentUser
 
-                        // Firebase Realtime Database에 추가(email, nickname, age, gender)
-                        val profile = User(email, nickname, age, gender)
-                        userList.child(user?.uid.toString()).setValue(profile)
+                            // Firebase Realtime Database에 추가(email, nickname, age, gender)
+                            val profile = User(email, nickname, age, gender)
+                            userList.child(user?.uid.toString()).setValue(profile)
 
-                        Toast.makeText(this, "가입완료", Toast.LENGTH_SHORT).show()
-                        finish()
-                    } else {
-                        try {
-                            throw task.exception!!
-                        } catch (e: FirebaseAuthWeakPasswordException) {
-                            Toast.makeText(this, "비밀번호는 6자리 이상이어야 합니다.", Toast.LENGTH_SHORT).show()
-                        } catch (e: FirebaseAuthInvalidCredentialsException) {
-                            Toast.makeText(this, "이메일 형식이 올바르지 않습니다.", Toast.LENGTH_SHORT).show()
-                        } catch (e: FirebaseAuthUserCollisionException) {
-                            Toast.makeText(this, "이미 존재하는 email입니다.", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(this, "가입완료", Toast.LENGTH_SHORT).show()
+                            finish()
+                        } else {
+                            try {
+                                throw task.exception!!
+                            } catch (e: FirebaseAuthWeakPasswordException) {
+                                Toast.makeText(this, "비밀번호는 6자리 이상이어야 합니다.", Toast.LENGTH_SHORT)
+                                    .show()
+                            } catch (e: FirebaseAuthInvalidCredentialsException) {
+                                Toast.makeText(this, "이메일 형식이 올바르지 않습니다.", Toast.LENGTH_SHORT)
+                                    .show()
+                            } catch (e: FirebaseAuthUserCollisionException) {
+                                Toast.makeText(this, "이미 존재하는 email입니다.", Toast.LENGTH_SHORT).show()
+                            }
                         }
                     }
-                }
+            }
         }
 
         binding.gotoLoginbtn.setOnClickListener {

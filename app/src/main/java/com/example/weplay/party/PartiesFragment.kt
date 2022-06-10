@@ -154,15 +154,4 @@ class PartiesFragment : Fragment() {
         intent.putExtra("firebaseIndex", "Parties/party/${party.pid}")
         activityResultLauncher.launch(intent)
     }
-
-//    override fun onStart() {
-//        super.onStart()
-//        adapter.startListening()
-//    }
-//
-//    override fun onStop() {
-//        super.onStop()
-//        adapter.stopListening()
-//    }
-
 }

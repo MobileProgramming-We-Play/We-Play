@@ -28,19 +28,29 @@ class LoginActivity : AppCompatActivity() {
             val email = binding.emailedit.text.toString()
             val password = binding.pwedit.text.toString()
 
-            auth.signInWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this) { task ->
-                    if (task.isSuccessful) {
-                        Toast.makeText(this, "로그인 성공", Toast.LENGTH_SHORT).show()
+            if (email == "") {
+                Toast.makeText(this, "이메일을 입력해주세요.", Toast.LENGTH_SHORT).show()
+            } else if (password == "") {
+                Toast.makeText(this, "비밀번호를 입력해주세요.", Toast.LENGTH_SHORT).show()
+            } else {
+                auth.signInWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(this) { task ->
+                        if (task.isSuccessful) {
+                            Toast.makeText(this, "로그인 성공", Toast.LENGTH_SHORT).show()
 
-                        val intent = Intent(this, MainActivity::class.java)
-                        startActivity(intent)
-                        finish()
-                    } else {
-                        Toast.makeText(this, "비밀번호가 일치하지 않거나 존재하지 않는 이메일입니다.", Toast.LENGTH_SHORT)
-                            .show()
+                            val intent = Intent(this, MainActivity::class.java)
+                            startActivity(intent)
+                            finish()
+                        } else {
+                            Toast.makeText(
+                                this,
+                                "비밀번호가 일치하지 않거나 존재하지 않는 이메일입니다.",
+                                Toast.LENGTH_SHORT
+                            )
+                                .show()
+                        }
                     }
-                }
+            }
         }
 
         binding.joinbtn.setOnClickListener {
