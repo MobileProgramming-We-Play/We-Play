@@ -1,4 +1,4 @@
-package com.example.weplay.party.read
+package com.example.weplay.user
 
 import android.content.Intent
 import android.os.Bundle
@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import com.example.weplay.LoginActivity
 import com.example.weplay.databinding.FragmentProfileBinding
+import com.example.weplay.party.read.MainActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth

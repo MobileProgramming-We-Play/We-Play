@@ -15,6 +15,7 @@ import com.example.weplay.databinding.ActivityPartyContentBinding
 import com.example.weplay.domain.ParticipantInfo
 import com.example.weplay.domain.Party
 import com.example.weplay.party.notification.NotificationReceiver
+import com.example.weplay.user.OthersProfileActivity
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.SupportMapFragment

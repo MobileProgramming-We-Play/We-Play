@@ -1,4 +1,4 @@
-package com.example.weplay
+package com.example.weplay.user
 
 import android.os.Bundle
 import android.widget.Toast

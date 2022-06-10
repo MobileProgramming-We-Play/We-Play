@@ -1,4 +1,4 @@
-package com.example.weplay.party.read
+package com.example.weplay.user
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

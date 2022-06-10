@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.WePlay">
         <activity
-            android:name=".party.read.OthersProfileActivity"
+            android:name=".user.OthersProfileActivity"
             android:exported="false" />
         <activity
             android:name=".party.write.PartyContentMakeActivity"
@@ -39,7 +39,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".JoinActivity"
+            android:name=".user.JoinActivity"
             android:exported="false" />
         <activity
             android:name=".party.read.PartyContentActivity"

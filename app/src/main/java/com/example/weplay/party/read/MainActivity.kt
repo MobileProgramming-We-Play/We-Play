@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.weplay.R
 import com.example.weplay.databinding.ActivityMainBinding
+import com.example.weplay.user.ProfileFragment
+import com.example.weplay.user.ProfileUpdateFragment
 import com.google.android.material.tabs.TabLayout
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
