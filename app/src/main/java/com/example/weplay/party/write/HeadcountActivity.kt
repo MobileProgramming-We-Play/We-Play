@@ -1,4 +1,4 @@
-package com.example.weplay
+package com.example.weplay.party.write
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity

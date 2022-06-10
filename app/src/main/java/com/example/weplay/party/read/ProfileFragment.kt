@@ -1,4 +1,4 @@
-package com.example.weplay.party
+package com.example.weplay.party.read
 
 import android.content.Intent
 import android.os.Bundle

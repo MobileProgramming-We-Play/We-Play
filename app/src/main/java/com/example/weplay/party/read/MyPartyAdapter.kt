@@ -1,6 +1,5 @@
-package com.example.weplay.party
+package com.example.weplay.party.read
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -17,7 +16,7 @@ class MyPartyAdapter(options: FirebaseRecyclerOptions<Party>)
         fun onItemClick(position: Int)
     }
 
-    var itemClickListener:OnItemClickListener?=null;
+    var itemClickListener: OnItemClickListener?=null;
 
     inner class ViewHolder(val binding: RowBinding):RecyclerView.ViewHolder(binding.root){
         init{

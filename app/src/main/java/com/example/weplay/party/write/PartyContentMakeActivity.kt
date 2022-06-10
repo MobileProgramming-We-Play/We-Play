@@ -1,14 +1,12 @@
-package com.example.weplay
+package com.example.weplay.party.write
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import com.example.weplay.databinding.ActivityPartyContentMakeBinding
 import com.example.weplay.domain.ParticipantInfo
 import com.example.weplay.domain.Party
-import com.example.weplay.party.MainActivity
-import com.google.android.gms.maps.model.LatLng
+import com.example.weplay.party.read.MainActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth

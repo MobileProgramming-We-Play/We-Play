@@ -1,14 +1,11 @@
-package com.example.weplay.party
+package com.example.weplay.party.read
 
 import android.icu.text.SimpleDateFormat
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.KeyboardShortcutGroup
-import android.view.Menu
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.weplay.databinding.ActivityChattingBinding
-import com.example.weplay.databinding.ActivityMainBinding
 import com.example.weplay.domain.Message
 import com.firebase.ui.database.FirebaseRecyclerOptions
 import com.google.firebase.auth.ktx.auth

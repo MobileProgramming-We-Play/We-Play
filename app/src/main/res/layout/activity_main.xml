@@ -5,11 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".party.MainActivity" >
+    tools:context=".party.read.MainActivity" >
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragmentContainerView"
-        android:name="com.example.weplay.party.PartiesFragment"
+        android:name="com.example.weplay.party.read.PartiesFragment"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="10"/>

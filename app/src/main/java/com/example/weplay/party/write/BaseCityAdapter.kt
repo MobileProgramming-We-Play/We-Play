@@ -1,4 +1,4 @@
-package com.example.weplay
+package com.example.weplay.party.write
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

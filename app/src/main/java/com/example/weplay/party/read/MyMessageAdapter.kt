@@ -1,4 +1,4 @@
-package com.example.weplay.party
+package com.example.weplay.party.read
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -8,7 +8,6 @@ import com.example.weplay.databinding.RowOtherBinding
 import com.example.weplay.domain.Message
 import com.firebase.ui.database.FirebaseRecyclerAdapter
 import com.firebase.ui.database.FirebaseRecyclerOptions
-import com.google.firebase.FirebaseOptions
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase

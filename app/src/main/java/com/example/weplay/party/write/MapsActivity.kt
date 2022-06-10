@@ -1,8 +1,9 @@
-package com.example.weplay
+package com.example.weplay.party.write
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.example.weplay.R
 import com.example.weplay.databinding.ActivityMapsBinding
 import com.google.android.gms.maps.*
 import com.google.android.gms.maps.model.LatLng

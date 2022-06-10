@@ -14,10 +14,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.WePlay">
         <activity
-            android:name=".party.OthersProfileActivity"
+            android:name=".party.read.OthersProfileActivity"
             android:exported="false" />
         <activity
-            android:name=".PartyContentMakeActivity"
+            android:name=".party.write.PartyContentMakeActivity"
             android:exported="false" />
 
         <receiver
@@ -42,10 +42,10 @@
             android:name=".JoinActivity"
             android:exported="false" />
         <activity
-            android:name=".party.PartyContentActivity"
+            android:name=".party.read.PartyContentActivity"
             android:exported="false" />
         <activity
-            android:name=".party.ChattingActivity"
+            android:name=".party.read.ChattingActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -54,7 +54,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".party.MainActivity"
+            android:name=".party.read.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -63,13 +63,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".SportsActivity"
+            android:name=".party.write.SportsActivity"
             android:exported="false" />
         <activity
-            android:name=".HeadcountActivity"
+            android:name=".party.write.HeadcountActivity"
             android:exported="false" />
         <activity
-            android:name=".MapsActivity"
+            android:name=".party.write.MapsActivity"
             android:exported="false" />
 
         <meta-data

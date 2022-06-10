@@ -1,4 +1,4 @@
-package com.example.weplay.party
+package com.example.weplay.party.read
 
 import android.annotation.SuppressLint
 import android.app.Activity
@@ -8,12 +8,9 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.core.view.setMargins
 import com.example.weplay.R
-import com.example.weplay.SportsActivity
 import com.example.weplay.databinding.ActivityPartyContentBinding
 import com.example.weplay.domain.ParticipantInfo
 import com.example.weplay.domain.Party
