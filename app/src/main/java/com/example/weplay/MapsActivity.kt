@@ -86,7 +86,7 @@ class MapsActivity : AppCompatActivity() {
     }
 
     private fun initLayout() {
-        val detailedPlace = inputDetailedPlace.text
+        val detailedPlace = inputDetailedPlace.text.toString()
 
         binding.mapbtn.setOnClickListener {
             if (::location.isInitialized && detailedPlace.isNotEmpty()) {
