@@ -183,6 +183,16 @@ class PartyContentActivity : AppCompatActivity() {
         mapFragment.getMapAsync {
             googleMap = it
             googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(loc, 16.0f))
+            googleMap.uiSettings.isZoomControlsEnabled = true
+
+            googleMap.setOnCameraMoveStartedListener {
+                mapFragment.view?.parent?.requestDisallowInterceptTouchEvent(true)
+            }
+
+            googleMap.setOnCameraIdleListener {
+                mapFragment.view?.parent?.requestDisallowInterceptTouchEvent(false)
+            }
+
 
             val option = MarkerOptions()
             option.position(loc)
@@ -190,8 +200,6 @@ class PartyContentActivity : AppCompatActivity() {
             option.title("위치")
             option.snippet("모임장소")
             googleMap.addMarker(option)?.showInfoWindow()
-
-//            googleMap.uiSettings.setAllGesturesEnabled(false)
 
         }
     }

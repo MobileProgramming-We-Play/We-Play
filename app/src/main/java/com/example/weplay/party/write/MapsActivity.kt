@@ -69,8 +69,16 @@ class MapsActivity : AppCompatActivity() {
         mapFragment.getMapAsync {
             mMap = it
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(loc, 16.0f))
-
             mMap.uiSettings.isZoomControlsEnabled = true
+
+            mMap.setOnCameraMoveStartedListener {
+                mapFragment.view?.parent?.requestDisallowInterceptTouchEvent(true)
+            }
+
+            mMap.setOnCameraIdleListener {
+                mapFragment.view?.parent?.requestDisallowInterceptTouchEvent(false)
+            }
+
 
             mMap.setOnMapClickListener { itLatLng ->
                 val options = MarkerOptions()
