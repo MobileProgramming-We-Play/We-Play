@@ -51,6 +51,7 @@ class MapsActivity : AppCompatActivity() {
                     putExtra("longitude", location.longitude)
                     putExtra("person", intent.getIntExtra("person", 0))
                     putExtra("field", intent.getStringExtra("field"))
+                    putExtra("pdate", intent.getLongExtra("pdate", 0))
                 }
                 startActivity(intent)
             }
